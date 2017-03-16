@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  birthday: 2017-03-16
+  age: 1
+  clubowner: false
+  admin: false
+
+two:
+  name: MyString
+  birthday: 2017-03-16
+  age: 1
+  clubowner: false
+  admin: false
