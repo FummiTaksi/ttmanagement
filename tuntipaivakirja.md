@@ -1,1 +1,2 @@
-16.3 Aiheen suunittelua 0,5h , koodausta 1h YHTEENSÄ: 1h
+16.3 Aiheen suunittelua 0,5h , koodausta 2h YHTEENSÄ: 2,5h
+SEURAAVAKSI: Player-club yhteyden saaminen valmiiksi. 

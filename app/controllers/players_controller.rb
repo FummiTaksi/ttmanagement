@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
+
   # GET /players
   # GET /players.json
   def index
@@ -28,7 +29,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     @player.admin = false;
     @player.clubowner = false;
-    @player.age = Date.today().year - @player.birthday.year
+    @player.age = @player.count_age
 
     respond_to do |format|
       if @player.save
@@ -73,6 +74,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :birthday, :age, :clubowner, :admin)
+      params.require(:player).permit(:firstname, :lastname, :birthday, :age, :clubowner, :admin)
     end
 end

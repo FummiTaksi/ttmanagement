@@ -12,9 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label "First name" %><br>
+    <%= f.text_field :firstname %>
   </div>
+    <div class="field">
+      <%= f.label "Last name"%><br>
+      <%= f.text_field :lastname %>
+    </div>
   <div class="field">
     <%= f.label :birthday %><br>
     <%= f.date_select :birthday %>
@@ -24,7 +28,7 @@
     <%= f.number_field :age %>
   </div>
   <div class="field">
-    <%= f.label :clubowner %><br>
+    <%= f.label "Club owner" %><br>
     <%= f.check_box :clubowner %>
   </div>
   <div class="field">

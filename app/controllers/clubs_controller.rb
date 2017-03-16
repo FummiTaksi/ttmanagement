@@ -1,4 +1,5 @@
 class ClubsController < ApplicationController
+  has_many :players
   before_action :set_club, only: [:show, :edit, :update, :destroy]
 
   # GET /clubs

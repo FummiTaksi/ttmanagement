@@ -5,7 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>First name</th>
+      <th>Last name</th>
       <th>Birthday</th>
       <th>Age</th>
       <th>Clubowner</th>
@@ -17,7 +18,8 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.name %></td>
+        <td><%= player.firstname %></td>
+        <td><%= player.lastname %></td>
         <td><%= player.birthday %></td>
         <td><%= player.age %></td>
         <td><%= player.clubowner %></td>
