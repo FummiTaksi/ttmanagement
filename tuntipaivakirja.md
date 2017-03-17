@@ -1,5 +1,5 @@
 ### Tuntipäiväkirja
---- | --------|-----
+--- | -------- | -----
 
-16.3| Aiheen suunittelua,koodauksen aloittamista | 2,5h
+16.3 | 2,5h | Aiheen suunittelua, koodauksen aloittamista
  
