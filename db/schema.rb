@@ -11,25 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316135907) do
+ActiveRecord::Schema.define(version: 20170317115013) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
     t.string   "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "player_id"
   end
 
   create_table "players", force: :cascade do |t|
     t.date     "birthday"
-    t.integer  "age"
     t.boolean  "clubowner"
     t.boolean  "admin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "firstname"
     t.string   "lastname"
     t.integer  "club_id"
+    t.string   "username"
+    t.string   "password_digest"
   end
 
 end

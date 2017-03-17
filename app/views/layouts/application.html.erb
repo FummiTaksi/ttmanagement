@@ -11,6 +11,13 @@
 <div class="navibar">
   <%= link_to "Clubs",clubs_path %>
   <%= link_to "Players",players_path %>
+  <% if current_player %>
+      signed in as <%= link_to current_player.username, current_player %>
+      <%= link_to "Sign out", signout_path %>
+  <% else %>
+      <%= link_to "Sign in", signin_path %>
+      <%= link_to "Sign up", signup_path %>
+      <% end %>
 </div>
 
 <%= yield %>

@@ -7,24 +7,33 @@
       </p>
 
 <p>
+  <Strong>Username:</Strong>
+  <%=@player.username %>
+</p>
+
+<p>
   <strong>Birthday:</strong>
   <%= @player.birthday %>
 </p>
 
 <p>
   <strong>Age:</strong>
-  <%= @player.age %>
+  <%= @player.count_age %>
 </p>
+<% if @player.clubowner %>
+<p>
+  <%=@player%> is owner of <%=@player.club %>
+</p>
+    <% elsif @player.club %>
+        <%=@player%> is member of <%= @player.club %>
+ <% end %>
+<% if @player.admin %>
 
 <p>
-  <strong>Clubowner:</strong>
-  <%= @player.clubowner %>
+  <%=@player%> is admin!
 </p>
 
-<p>
-  <strong>Admin:</strong>
-  <%= @player.admin %>
-</p>
+    <% end %>
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
+<%=link_to 'Edit', edit_player_path(@player) if current_player and current_player.username == @player.username %> |
 <%= link_to 'Back', players_path %>

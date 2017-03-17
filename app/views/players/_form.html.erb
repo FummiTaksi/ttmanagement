@@ -21,20 +21,18 @@
     </div>
   <div class="field">
     <%= f.label :birthday %><br>
-    <%= f.date_select :birthday %>
+    <%= f.date_select :birthday, start_year: 1900 %>
   </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label "Club owner" %><br>
-    <%= f.check_box :clubowner %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
-  </div>
+    <div class="field">
+      <%= f.label :password %> <br />
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation  %>
+    </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

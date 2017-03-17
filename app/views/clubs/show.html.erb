@@ -10,5 +10,17 @@
   <%= @club.city %>
 </p>
 
-<%= link_to 'Edit', edit_club_path(@club) %> |
+
+<h1>Listing players of <%=@club.name%></h1>
+
+<p>
+  Total of players: <%= @club.players.size %>
+</p>
+
+<p>
+  Clubowner: <%=link_to @club.clubowner, @club.clubowner %>
+</p>
+<%= render 'list', players: @club.players %>
+
+<%= link_to 'Edit', edit_club_path(@club) if current_player and current_player == @club.clubowner %> |
 <%= link_to 'Back', clubs_path %>

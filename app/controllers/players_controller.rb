@@ -13,6 +13,21 @@ class PlayersController < ApplicationController
   def show
   end
 
+  def toggle_clubowner
+    if @player.clubowner
+      @player.clubowner = false
+    else
+      @player.clubowner = true
+    end
+  end
+
+  def toggle_admin
+    if @player.admin
+      @player.admin = false
+    else
+      @player.admin = false
+    end
+  end
   # GET /players/new
   def new
     @player = Player.new
@@ -27,9 +42,9 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
-    @player.admin = false;
-    @player.clubowner = false;
-    @player.age = @player.count_age
+    @player.admin = false
+    @player.clubowner = false
+    @player.username = "#{@player.firstname}#{@player.lastname}"
 
     respond_to do |format|
       if @player.save
@@ -74,6 +89,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:firstname, :lastname, :birthday, :age, :clubowner, :admin)
+      params.require(:player).permit(:firstname, :lastname, :username, :birthday, :password, :password_confirmation)
     end
 end

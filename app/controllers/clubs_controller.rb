@@ -1,5 +1,5 @@
 class ClubsController < ApplicationController
-  has_many :players
+
   before_action :set_club, only: [:show, :edit, :update, :destroy]
 
   # GET /clubs
@@ -70,6 +70,6 @@ class ClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
-      params.require(:club).permit(:name, :city)
+      params.require(:club).permit(:name, :city, :clubowner)
     end
 end

@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   belongs_to :club
+  has_secure_password
   validate :birthday_cant_be_in_future
 
   def count_age
@@ -15,5 +16,13 @@ class Player < ActiveRecord::Base
       errors.add(:birthday_cant_be_in_future,"Birthday cant be in future!")
     end
 
+  end
+
+
+
+
+
+  def to_s
+    "#{firstname} #{lastname}"
   end
 end
