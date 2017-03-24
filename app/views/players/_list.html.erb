@@ -19,7 +19,10 @@
         <% if current_player and current_player == player %>
             <td><%= link_to 'Edit', edit_player_path(player) %></td>
             <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
         <% end %>
+
 
       </tr>
   <% end %>

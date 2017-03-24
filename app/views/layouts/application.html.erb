@@ -18,6 +18,10 @@
       <%= link_to "Sign in", signin_path %>
       <%= link_to "Sign up", signup_path %>
       <% end %>
+
+  <% if current_player.clubowner %>
+    <%= link_to "Add players to your club", new_membership_path %>
+  <% end %>
 </div>
 
 <%= yield %>

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :memberships
   resources :players
   resources :clubs
   resource :session, only: [:new, :create, :destroy]
+
   root 'clubs#index'
 
   get 'signin', to: 'sessions#new'

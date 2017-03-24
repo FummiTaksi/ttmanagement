@@ -13,7 +13,7 @@
 
 <p>
   <strong>Birthday:</strong>
-  <%= @player.birthday %>
+  <%= @player.birthday%>
 </p>
 
 <p>
@@ -26,6 +26,7 @@
 </p>
     <% elsif @player.club %>
         <%=@player%> is member of <%= @player.club %>
+        <%=link_to 'Leave club', 
  <% end %>
 <% if @player.admin %>
 

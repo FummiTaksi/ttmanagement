@@ -35,12 +35,15 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'capybara'
+  gem 'pry-rails'
+  gem 'better_errors'
   gem 'rspec-rails', '~> 3.5'
 end
 

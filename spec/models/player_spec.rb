@@ -65,18 +65,4 @@ RSpec.describe Player, type: :model do
     expect(Player.count).to eq(0)
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
