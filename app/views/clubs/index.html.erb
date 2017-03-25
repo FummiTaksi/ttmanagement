@@ -16,8 +16,11 @@
       <tr>
         <td><%= link_to club.name,club %></td>
         <td><%= club.city %></td>
+        <% if current_player and club.player_id == current_player.id %>
         <td><%= link_to 'Edit', edit_club_path(club) %></td>
         <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+            <% end %>
       </tr>
     <% end %>
   </tbody>

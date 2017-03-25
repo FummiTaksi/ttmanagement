@@ -37,4 +37,5 @@
     <% end %>
 
 <%=link_to 'Edit', edit_player_path(@player) if current_player and current_player.username == @player.username %> |
+<td><%= link_to 'Destroy', @player, method: :delete, data: { confirm: 'Are you sure?' } if current_player and current_player.username == @player.username%></td>|
 <%= link_to 'Back', players_path %>

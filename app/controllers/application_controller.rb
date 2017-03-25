@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_player
 
   def current_player
+
     return nil if session[:player_id].nil?
     Player.find(session[:player_id])
+
+
   end
-end
+
+  end

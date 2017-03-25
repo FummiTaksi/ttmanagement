@@ -74,6 +74,10 @@ describe "Player" do
      expect(page).to have_content "Name: Pekka Peranen"
 
    end
+
+   it "can delete own account" do
+
+   end
    it "can sign in with correct info" do
      visit signin_path
      fill_in('username', with: "JaakkoJaakkonen")

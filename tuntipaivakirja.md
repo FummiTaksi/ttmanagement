@@ -5,3 +5,4 @@ Päivä | Tunnit | Mitä tein
 17.3 | 4h | Rekisteröityminen ja kirjautuminen toteuttu 
 23.3 | 2h | Testien kirjoittamista luokalle Player
 25.3 | 3h | Testejä luokille Player,Club. Capybaratestaus aloitettu.
+26.3 | 1,5h | Testejä paranneltu, Membership-oliota alustettu
