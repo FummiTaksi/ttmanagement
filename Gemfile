@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
+  gem 'launchy'
 end
 
 group :development, :test do

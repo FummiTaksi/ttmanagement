@@ -19,7 +19,7 @@
       <%= link_to "Sign up", signup_path %>
       <% end %>
 
-  <% if current_player.clubowner %>
+  <% if current_player and current_player.clubowner %>
     <%= link_to "Add players to your club", new_membership_path %>
   <% end %>
 </div>

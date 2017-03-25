@@ -4,6 +4,7 @@ FactoryGirl.define do
     lastname "Jaakkonen"
     password "Salis"
     password_confirmation "Salis"
+    username "JaakkoJaakkonen"
     birthday Date.new(2010, 1, 10)
   end
 

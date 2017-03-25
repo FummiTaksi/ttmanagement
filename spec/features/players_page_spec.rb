@@ -2,7 +2,11 @@ require 'rails_helper'
 
 
 describe "Player" do
-  let!(:player) {FactoryGirl.create(:player)}
+
+  before :each do
+    FactoryGirl.create :player
+  end
+
 
   it "can sign up with correct info" do
     visit signup_path
@@ -40,19 +44,27 @@ describe "Player" do
 
  describe "who has signed up" do
 
+
+
+
+
+
+
+
+
    it "isn't admin at default" do
      pekka = register_as_pekka_pekkanen
-     expect(pekka.admin).to eq(nil) ##miksi nil?
+     expect(pekka.admin).to eq(false)
    end
 
    it "isn't clubowner at default" do
      pekka = register_as_pekka_pekkanen
-     expect(pekka.clubowner).to eq(nil) ## miksi?
+     expect(pekka.clubowner).to eq(false)
    end
 
 
    it "can edit its information" do
-     pekka = register_as_pekka_pekkanen
+     register_as_pekka_pekkanen
      sign_in_as_pekka_pekkanen
      visit players_path
      click_link('Edit')
@@ -63,11 +75,11 @@ describe "Player" do
 
    end
    it "can sign in with correct info" do
-
-     register_as_pekka_pekkanen
-     sign_in_as_pekka_pekkanen
+     visit signin_path
+     fill_in('username', with: "JaakkoJaakkonen")
+     fill_in('password', with: "Salis")
+     click_button('Log in')
      expect(page).to have_content "Welcome back!"
-     expect(page).to have_content "PekkaPekkanen"
 
    end
 
@@ -93,14 +105,14 @@ describe "Player" do
  end
 
   def register_as_pekka_pekkanen
-    pekka = FactoryGirl.create(:player2)
+    pekka = FactoryGirl.create :player2
     visit signup_path
     fill_in('player_firstname', with: pekka.firstname)
     fill_in('player_lastname', with: pekka.lastname)
     fill_in('player_password', with: pekka.password)
     fill_in('player_password_confirmation', with: pekka.password_confirmation)
     click_button('Create Player')
-    pekka
+    pekka = Player.find_by username: "PekkaPekkanen"
   end
 
   def sign_in_as_pekka_pekkanen
