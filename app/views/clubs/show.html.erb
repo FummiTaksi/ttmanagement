@@ -22,5 +22,5 @@
 </p>
 <%= render 'list', players: @club.players %>
 
-<%= link_to 'Edit', edit_club_path(@club) if current_player and current_player == @club.clubowner %> |
+<%= link_to 'Edit Club', edit_club_path(@club) if current_player and current_player == @club.clubowner %> |
 <%= link_to 'Back', clubs_path %>

@@ -44,14 +44,6 @@ describe "Player" do
 
  describe "who has signed up" do
 
-
-
-
-
-
-
-
-
    it "isn't admin at default" do
      pekka = register_as_pekka_pekkanen
      expect(pekka.admin).to eq(false)
@@ -75,9 +67,7 @@ describe "Player" do
 
    end
 
-   it "can delete own account" do
 
-   end
    it "can sign in with correct info" do
      visit signin_path
      fill_in('username', with: "JaakkoJaakkonen")
