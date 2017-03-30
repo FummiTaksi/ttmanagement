@@ -73,12 +73,17 @@ class PlayersController < ApplicationController
   # DELETE /players/1
   # DELETE /players/1.json
   def destroy
-    @player.destroy
-    respond_to do |format|
+    if @player.username == current_player.username
+      @player.destroy
+      respond_to do |format|
       format.html { redirect_to players_url, notice: 'Player was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
+    session[:player_id] = nil
+    end
+
+    end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

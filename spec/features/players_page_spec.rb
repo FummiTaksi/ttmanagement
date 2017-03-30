@@ -57,7 +57,7 @@ describe "Player" do
 
    it "can edit its information" do
      register_as_pekka_pekkanen
-     sign_in_as_pekka_pekkanen
+     sign_in("PekkaPekkanen", "Salis")
      visit players_path
      click_link('Edit')
      fill_in('player_lastname', with: "Peranen")
@@ -67,19 +67,21 @@ describe "Player" do
 
    end
 
+   it "can delete own account" do
+     sign_in("JaakkoJaakkonen", "Salis")
+     click_link "Destroy"
+     expect(page).to have_content "Player was successfully destroyed."
+     expect(Player.count).to eq(0)
+   end
+
 
    it "can sign in with correct info" do
-     visit signin_path
-     fill_in('username', with: "JaakkoJaakkonen")
-     fill_in('password', with: "Salis")
-     click_button('Log in')
+     sign_in("JaakkoJaakkonen", "Salis")
      expect(page).to have_content "Welcome back!"
-
    end
 
    it "signout redirects to right place" do
-     register_as_pekka_pekkanen
-     sign_in_as_pekka_pekkanen
+     sign_in("JaakkoJaakkonen", "Salis")
      click_link('Sign out')
      expect(page).to have_content "Listing Clubs"
      expect(page).to have_content "Sign in"
@@ -89,10 +91,7 @@ describe "Player" do
 
    it "is redirected to signin page if wrong password" do
      register_as_pekka_pekkanen
-
-     visit signin_path
-     fill_in('username', with:"PekkaPekkanen")
-     fill_in('password', with:"Väärä")
+     sign_in("PekkaPekkanen","Väärä")
      click_button('Log in')
      expect(page).to have_content "Username and/or password mismatch"
    end
@@ -109,11 +108,12 @@ describe "Player" do
     pekka = Player.find_by username: "PekkaPekkanen"
   end
 
-  def sign_in_as_pekka_pekkanen
-    register_as_pekka_pekkanen
+
+
+  def sign_in(username,password)
     visit signin_path
-    fill_in('username', with:"PekkaPekkanen")
-    fill_in('password', with:"Salis")
+    fill_in('username', with: username)
+    fill_in('password', with: password)
     click_button('Log in')
   end
 
