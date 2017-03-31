@@ -7,3 +7,5 @@ Päivä | Tunnit | Mitä tein
 25.3 | 3h | Testejä luokille Player,Club. Capybaratestaus aloitettu.
 26.3 | 1,5h | Testejä paranneltu, Membership-oliota alustettu
 27.3 | 0,5h | Muokattu club-viewiä, kirjoitettu testi clubin editoimiselle
+30.3 | 1,5h | Pelaajan poistaminen toimii, lisää testejä ja debugattu koodia
+
