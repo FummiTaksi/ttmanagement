@@ -27,9 +27,14 @@ class MembershipsController < ApplicationController
   # POST /memberships.json
   def create
     membership = Membership.new(membership_params)
-    membership.club_id = current_player.club.id
+
     respond_to do |format|
       if membership.save
+        membership.club_id = current_player.club.id
+        @player = Player.find_by id: membership.player_id
+        @player.club_id = membership.club_id
+        @club = current_player.club
+        @club.players << @player
         format.html { redirect_to current_player.club, notice: 'Membership was successfully created.' }
         format.json { render :show, status: :created, location: current_player.club}
 
