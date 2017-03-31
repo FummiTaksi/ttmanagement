@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   belongs_to :club
+  has_one :membership
   has_secure_password
   validate :birthday_cant_be_in_future
 

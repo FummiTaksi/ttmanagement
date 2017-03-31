@@ -30,7 +30,6 @@ class MembershipsController < ApplicationController
     membership.club_id = current_player.club.id
     respond_to do |format|
       if membership.save
-
         format.html { redirect_to current_player.club, notice: 'Membership was successfully created.' }
         format.json { render :show, status: :created, location: current_player.club}
 
