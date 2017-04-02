@@ -9,3 +9,4 @@ Päivä | Tunnit | Mitä tein
 27.3 | 0,5h | Muokattu club-viewiä, kirjoitettu testi clubin editoimiselle
 30.3 | 1,5h | Pelaajan poistaminen toimii, lisää testejä ja debugattu koodia
 31.3 | 2,5h |  pelaajan lisääminen clubiin korjattu
+2.4  | 1,5h | testattu ja koodattu clubiin liittyminen / lähteminen

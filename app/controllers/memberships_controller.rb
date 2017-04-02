@@ -15,7 +15,7 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
-    @players = Player.all
+    @players = Player.all.select {|player| player.club_id.nil?}
     @club = current_player.club
   end
 
@@ -62,9 +62,13 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
+    @player = Player.find_by id: @membership.player_id
+    @club = current_player.club
+    @club.players.delete(@player)
     @membership.destroy
+
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: 'Membership was successfully destroyed.' }
+      format.html { redirect_to current_player, notice: 'Membership was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

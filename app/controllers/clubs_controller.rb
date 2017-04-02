@@ -11,6 +11,15 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.json
   def show
+    if !@club.players.include?(current_player)
+      @membership = Membership.new
+      @membership.club_id = @club_id
+    else  # jos olen jäsen
+
+      @membership =current_player.membership
+
+    end
+
   end
 
   # GET /clubs/new
@@ -42,7 +51,6 @@ class ClubsController < ApplicationController
   # PATCH/PUT /clubs/1
   # PATCH/PUT /clubs/1.json
   def update
-    byebug
     respond_to do |format|
       if @club.update(club_params)
         format.html { redirect_to @club, notice: 'Club was successfully updated.' }

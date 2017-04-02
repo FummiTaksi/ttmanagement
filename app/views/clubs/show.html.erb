@@ -22,5 +22,12 @@
 </p>
 <%= render 'list', players: @club.players %>
 
-<%= link_to 'Edit Club', edit_club_path(@club) if current_player and current_player == @club.clubowner %> |
+<%= link_to 'Edit Club', edit_club_path(@club) if current_player and current_player == @club.clubowner %>
+
+<bd></bd>
+<% if @club.players.include?(current_player) %>
+    <%= form_for(@membership, :method => :delete) do |f| %>
+        <%= f.submit value: "Leave this club" %>
+    <% end %>
+    <% end %>
 <%= link_to 'Back', clubs_path %>

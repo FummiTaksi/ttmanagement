@@ -27,5 +27,6 @@
 </table>
 
 <br>
-
+<% if current_player and current_player.clubowner %>
 <%= link_to 'New Club', new_club_path %>
+<% end %>
