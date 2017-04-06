@@ -36,6 +36,9 @@ class ClubsController < ApplicationController
   # POST /clubs.json
   def create
     @club = Club.new(club_params)
+    @club.players << current_player
+    @club.player_id = current_player.id
+
 
     respond_to do |format|
       if @club.save
@@ -74,6 +77,10 @@ class ClubsController < ApplicationController
 
   def add_player(player)
     @club.players << player
+  end
+
+  def clubowner
+
   end
 
   private

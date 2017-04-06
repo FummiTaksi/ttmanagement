@@ -25,7 +25,7 @@
 <%= link_to 'Edit Club', edit_club_path(@club) if current_player and current_player == @club.clubowner %>
 
 <bd></bd>
-<% if @club.players.include?(current_player) %>
+<% if @club.players.include?(current_player) and !current_player.clubowner %>
     <%= form_for(@membership, :method => :delete) do |f| %>
         <%= f.submit value: "Leave this club" %>
     <% end %>

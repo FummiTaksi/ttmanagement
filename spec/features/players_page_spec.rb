@@ -97,6 +97,17 @@ describe "Player" do
    end
  end
 
+  describe "who is admin " do
+    it "can make player clubowner" do
+      signin("AdminAdmin", "Salis")
+      visit players_path
+      click_link("Pekka")
+      click_link("make this player a clubowner")
+      expect(player.clubowner).to eq(true)
+
+    end
+  end
+
   def register_as_pekka_pekkanen
     pekka = FactoryGirl.create :player2
     visit signup_path

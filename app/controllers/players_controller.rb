@@ -13,13 +13,7 @@ class PlayersController < ApplicationController
   def show
   end
 
-  def toggle_clubowner
-    if @player.clubowner
-      @player.clubowner = false
-    else
-      @player.clubowner = true
-    end
-  end
+
 
   def toggle_admin
     if @player.admin
@@ -82,7 +76,19 @@ class PlayersController < ApplicationController
     session[:player_id] = nil
     end
 
+  end
+
+  def toggle_clubowner
+    player = Player.find(params[:id])
+    if player.clubowner
+      player.clubowner = false
+    else
+      player.clubowner = true
     end
+    player.save
+    new_status = player.clubowner ? "clubowner" : "not clubowner"
+    redirect_to :back, notice: "This users status changed to #{new_status}"
+  end
 
 
   private

@@ -7,7 +7,7 @@ class Club < ActiveRecord::Base
   end
 
   def clubowner
-    Player.find_by player_id = player_id
+    Player.find_by id: player_id
   end
 
 end

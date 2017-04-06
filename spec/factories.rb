@@ -28,6 +28,17 @@ FactoryGirl.define do
     birthday Date.new(2000,10,10)
   end
 
+  factory :player4 , class: Player do
+    id 4
+    firstname "Admin"
+    lastname "Admin"
+    password "Salis"
+    password_confirmation "Salis"
+    username "Admin"
+    admin true
+    birthday Date.new(2000,10,10)
+  end
+
   factory :membership do
     id 1
     player_id 1
