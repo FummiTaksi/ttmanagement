@@ -34,11 +34,21 @@ FactoryGirl.define do
     lastname "Admin"
     password "Salis"
     password_confirmation "Salis"
-    username "Admin"
+    username "AdminAdmin"
     admin true
     birthday Date.new(2000,10,10)
   end
 
+  factory :clubowner , class: Player do
+    id 5
+    firstname "Club"
+    lastname "Owner"
+    password "Salis"
+    password_confirmation "Salis"
+    username "ClubOwner"
+    clubowner true
+    birthday Date.new(2000,10,10)
+  end
   factory :membership do
     id 1
     player_id 1

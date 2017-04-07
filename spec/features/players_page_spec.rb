@@ -4,7 +4,7 @@ require 'rails_helper'
 describe "Player" do
 
   before :each do
-    FactoryGirl.create :player
+     FactoryGirl.create :player
   end
 
 
@@ -98,12 +98,18 @@ describe "Player" do
  end
 
   describe "who is admin " do
+
+  before :each do
+    FactoryGirl.create :player4
+  end
+
     it "can make player clubowner" do
-      signin("AdminAdmin", "Salis")
+      sign_in("AdminAdmin", "Salis")
       visit players_path
-      click_link("Pekka")
+      click_link("Jaakko")
       click_link("make this player a clubowner")
-      expect(player.clubowner).to eq(true)
+      jaakko = Player.first
+      expect(jaakko.clubowner).to eq(true)
 
     end
   end

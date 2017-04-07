@@ -11,3 +11,4 @@ Päivä | Tunnit | Mitä tein
 31.3 | 2,5h |  pelaajan lisääminen clubiin korjattu
 2.4  | 1,5h | testattu ja koodattu clubiin liittyminen / lähteminen
 6.4  | 1h   | toggle clubowner toteutettu, clubin luominen, testit rikki
+7.4  | 2,5h | testattu clubin toiminnallisuutta lisää, testit läpi

@@ -8,13 +8,16 @@ describe "Club" do
     player = FactoryGirl.create :player
     player2 = FactoryGirl.create :player2
     player3 = FactoryGirl.create :player3
+    clubowner = FactoryGirl.create :clubowner
     membership = FactoryGirl.create :membership
     membership2 = FactoryGirl.create :membership2
     player.clubowner = true
+    player.save
 
     club.players << player
     club.players << player3
     club.player_id = player.id
+    club.save
   end
 
   it "Lists clubs correctly" do
@@ -22,6 +25,29 @@ describe "Club" do
     expect(page).to have_content "Listing Clubs"
     expect(page).to have_content "ttclub"
   end
+
+  it "can be created" do
+    sign_in("ClubOwner", "Salis")
+    visit clubs_path
+    click_link "New Club"
+    fill_in('Name', with: "DogeClub")
+    fill_in('City', with: "Herttoniemi")
+    click_button("Create Club")
+    expect(Club.count).to eq(2)
+    expect(page).to have_content "Club was successfully created."
+  end
+
+  it "can have more players added" do
+    sign_in("JaakkoJaakkonen", "Salis")
+    click_link("Add players to your club")
+    select("Pekka Pekkanen", from: 'membership[player_id]')
+    click_button "Create Membership"
+    expect(page).to have_content "Membership was successfully created."
+    club = Club.first
+    expect(club.players.size).to eq (3)
+  end
+
+
 
 
   it "shows right clubowner" do
