@@ -12,3 +12,4 @@ Päivä | Tunnit | Mitä tein
 2.4  | 1,5h | testattu ja koodattu clubiin liittyminen / lähteminen
 6.4  | 1h   | toggle clubowner toteutettu, clubin luominen, testit rikki
 7.4  | 2,5h | testattu clubin toiminnallisuutta lisää, testit läpi
+20.4 | 1,5h | travis, heroku lisätty, testejä refaktoroitu
