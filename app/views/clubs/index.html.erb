@@ -18,8 +18,9 @@
         <td><%= club.city %></td>
         <% if current_player and club.player_id == current_player.id %>
         <td><%= link_to 'Edit', edit_club_path(club) %></td>
+            <% if club.players.size == 1 %>
         <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+             <% end %>
             <% end %>
       </tr>
     <% end %>
@@ -27,6 +28,6 @@
 </table>
 
 <br>
-<% if current_player and current_player.clubowner %>
+<% if current_player and current_player.clubowner and current_player.club.nil? %>
 <%= link_to 'New Club', new_club_path %>
 <% end %>
