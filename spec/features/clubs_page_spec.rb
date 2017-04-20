@@ -13,13 +13,17 @@ describe "Club" do
       membership2 = FactoryGirl.create :membership2
       player.clubowner = true
       player.save
-
+      club.players << player
       club.player_id = player.id
       club.save
     end
 
     it "can be destroyed if there is one player" do
-
+       sign_in("JaakkoJaakkonen", "Salis")
+       visit_ttclub_page
+       click_link("Destroy")
+       expect(page).to have_content "Club was successfully destroyed."
+       expect(Club.count).to eq( 0)
     end
   end
 
@@ -102,6 +106,24 @@ describe "Club" do
        expect(page).to have_content "Membership was successfully destroyed."
        visit_ttclub_page
        expect(page).to have_content "Total of players: 1"
+    end
+
+    it "cant be left by clubowner" do
+      sign_in("JaakkoJaakkonen","Salis")
+      visit_ttclub_page
+      expect(page).to have_no_content("Leave this club")
+    end
+
+    it "cant be destroyed by clubowner" do
+      sign_in("JaakkoJaakkonen","Salis")
+      visit_ttclub_page
+      expect(page).to have_no_content("Destroy")
+    end
+
+    it "cant be destroyed by a member" do
+      sign_in("MattiLuukkainen", "Salis")
+      visit_ttclub_page
+      expect(page).to have_no_content("Destroy")
     end
 
 

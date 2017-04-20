@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>City</th>
+      <th>Players</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= link_to club.name,club %></td>
         <td><%= club.city %></td>
+        <td><%=club.players.count%></td>
         <% if current_player and club.player_id == current_player.id %>
         <td><%= link_to 'Edit', edit_club_path(club) %></td>
             <% if club.players.size == 1 %>
