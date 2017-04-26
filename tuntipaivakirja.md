@@ -14,3 +14,4 @@ Päivä | Tunnit | Mitä tein
 7.4  | 2,5h | testattu clubin toiminnallisuutta lisää, testit läpi
 20.4 | 2,5h | travis, heroku lisätty, koodin hifistelyä
 21.4 | 0,5h | match-scaffoldin hahmottelua
+26.4 | 1h   | match-scaffold luotu
