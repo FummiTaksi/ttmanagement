@@ -1,0 +1,57 @@
+<%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :homefirst %><br>
+    <%= f.number_field :homefirst %>
+  </div>
+  <div class="field">
+    <%= f.label :awayfirst %><br>
+    <%= f.number_field :awayfirst %>
+  </div>
+  <div class="field">
+    <%= f.label :homesecond %><br>
+    <%= f.number_field :homesecond %>
+  </div>
+  <div class="field">
+    <%= f.label :awaysecond %><br>
+    <%= f.number_field :awaysecond %>
+  </div>
+  <div class="field">
+    <%= f.label :homethird %><br>
+    <%= f.number_field :homethird %>
+  </div>
+  <div class="field">
+    <%= f.label :awaythird %><br>
+    <%= f.number_field :awaythird %>
+  </div>
+  <div class="field">
+    <%= f.label :homefourth %><br>
+    <%= f.number_field :homefourth %>
+  </div>
+  <div class="field">
+    <%= f.label :awayfourth %><br>
+    <%= f.number_field :awayfourth %>
+  </div>
+  <div class="field">
+    <%= f.label :homefifth %><br>
+    <%= f.number_field :homefifth %>
+  </div>
+  <div class="field">
+    <%= f.label :awayfifth %><br>
+    <%= f.number_field :awayfifth %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
