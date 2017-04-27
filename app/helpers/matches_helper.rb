@@ -1,8 +1,10 @@
+
+
 module MatchesHelper
 
 
   def victorySet(score1 ,score2)
-    if (score1 < 11)
+    if (score2 < 0 || score1 < 11)
       return false
     end
     if (score1 == 11 && score2 < 10)
@@ -12,7 +14,12 @@ module MatchesHelper
   end
 
   def legitSet(score1, score2)
-    return victory(score1, score2) || victory(score2 , score1)
+    return victorySet(score1, score2) || victorySet(score2 , score1)
   end
+
+
+
+
+
 
 end

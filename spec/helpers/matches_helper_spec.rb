@@ -39,6 +39,32 @@ RSpec.describe MatchesHelper, type: :helper do
     end
   end
 
+  describe "method legitSet" do
+    it "returns false with 11-11" do
+      expect(legitSet(11, 11)).to eq false
+    end
+
+    it "returns true with 11-9" do
+      expect(legitSet(11, 9)).to eq true
+    end
+
+    it "returns false with 15-11" do
+      expect(legitSet(15, 11)).to eq false
+    end
+
+    it "returns true with 14-12" do
+      expect(legitSet(14,12)).to eq true
+    end
+
+    it "returns false with 11- -1" do
+      expect(legitSet(11, -1)).to eq false
+    end
+
+    it "returns false with -5 - 11" do
+      expect(legitSet(-5, 11)).to eq false
+    end
+  end
+
 
 
 

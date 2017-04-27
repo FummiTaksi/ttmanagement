@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   def current_player
     return nil if session[:player_id].nil?
     Player.find(session[:player_id])
-
-
   end
 
   end

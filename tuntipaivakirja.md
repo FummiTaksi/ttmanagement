@@ -16,3 +16,4 @@ Päivä | Tunnit | Mitä tein
 21.4 | 0,5h | match-scaffoldin hahmottelua
 26.4 | 1h   | match-scaffold luotu
 27.4 | 0,5h | match-luokan metodi setVictory testattu 
+27.4 | 2,5h | match-luokkaa testattu lisää
