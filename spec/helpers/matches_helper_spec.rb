@@ -11,5 +11,35 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe MatchesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+
+  describe "method victory" do
+    it "returns true with 5-11 " do
+      expect(victorySet(5, 11)).to eq false
+    end
+
+    it "return true with 11-5" do
+      expect(victorySet(11, 5)).to eq true
+    end
+
+    it "return false with 11-10" do
+      expect(victorySet(11, 10)).to eq false
+    end
+
+    it "return true with 14-12" do
+      expect(victorySet(14, 12)).to eq true
+    end
+
+    it "returns false with 17-12" do
+      expect(victorySet(17, 12)).to eq false
+    end
+
+    it "return false with 10-8" do
+      expect(victorySet(10, 8)).to eq false
+    end
+  end
+
+
+
+
 end

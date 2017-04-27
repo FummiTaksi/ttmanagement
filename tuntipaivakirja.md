@@ -15,3 +15,4 @@ Päivä | Tunnit | Mitä tein
 20.4 | 2,5h | travis, heroku lisätty, koodin hifistelyä
 21.4 | 0,5h | match-scaffoldin hahmottelua
 26.4 | 1h   | match-scaffold luotu
+27.4 | 0,5h | match-luokan metodi setVictory testattu 
