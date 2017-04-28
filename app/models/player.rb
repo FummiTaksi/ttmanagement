@@ -1,6 +1,7 @@
 class Player < ActiveRecord::Base
   belongs_to :club
   has_one :membership
+  has_many :matches
   has_secure_password
   validate :birthday_cant_be_in_future
 
@@ -29,8 +30,16 @@ class Player < ActiveRecord::Base
     if birthday.year > Date.today().year
       errors.add(:birthday_cant_be_in_future,"Birthday cant be in future!")
     end
-
   end
+
+  def matches
+    matches = Match.all
+    playersMatches = []
+    matches.each{ |match| playersMatches.push(match) if match.player1_id == id or match.player2_id == id }
+    matches
+  end
+
+
 
  def username
    "#{firstname}#{lastname}"

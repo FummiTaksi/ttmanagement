@@ -1,54 +1,49 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Homefirst:</strong>
-  <%= @match.homefirst %>
-</p>
+<b> <%=@match%></b>
 
-<p>
-  <strong>Awayfirst:</strong>
-  <%= @match.awayfirst %>
-</p>
 
-<p>
-  <strong>Homesecond:</strong>
-  <%= @match.homesecond %>
-</p>
+<table>
+  <thead>
+  <tr>
+    <th>Player</th>
+    <th>Club</th>
+    <th>1.set</th>
+    <th>2.set</th>
+    <th>3.set</th>
+    <th>4.set</th>
+    <th>5.set</th>
+    <th>total</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
 
-<p>
-  <strong>Awaysecond:</strong>
-  <%= @match.awaysecond %>
-</p>
+  <tbody>
 
-<p>
-  <strong>Homethird:</strong>
-  <%= @match.homethird %>
-</p>
+      <tr>
+        <td><%=link_to @match.player1 , @match.player1%></td>
+        <td><%=link_to @match.player1.club, @match.player1.club %></td>
+        <td><%=@match.homefirst %></td>
+        <td><%=@match.homesecond %></td>
+        <td><%=@match.homethird %></td>
+        <td><%=@match.homefourth %></td>
+        <td><%=@match.homefifth %></td>
+        <td><%=@match.homeSets %></td>
 
-<p>
-  <strong>Awaythird:</strong>
-  <%= @match.awaythird %>
-</p>
 
-<p>
-  <strong>Homefourth:</strong>
-  <%= @match.homefourth %>
-</p>
 
-<p>
-  <strong>Awayfourth:</strong>
-  <%= @match.awayfourth %>
-</p>
-
-<p>
-  <strong>Homefifth:</strong>
-  <%= @match.homefifth %>
-</p>
-
-<p>
-  <strong>Awayfifth:</strong>
-  <%= @match.awayfifth %>
-</p>
+      </tr>
+      <tr>
+        <td><%=link_to @match.player2, @match.player2 %></td>
+        <td><%=link_to @match.player2.club, @match.player2.club %></td>
+        <td><%=@match.awayfirst %></td>
+        <td><%=@match.awaysecond %></td>
+        <td><%=@match.awaythird %></td>
+        <td><%=@match.awayfourth %></td>
+        <td><%=@match.awayfifth %></td>
+        <td><%=@match.awaySets %></td>
+      </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>

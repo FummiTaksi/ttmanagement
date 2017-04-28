@@ -31,6 +31,8 @@ class PlayersController < ApplicationController
   def edit
   end
 
+
+
   # POST /players
   # POST /players.json
   def create

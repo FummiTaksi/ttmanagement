@@ -20,6 +20,8 @@
   <strong>Age:</strong>
   <%= @player.count_age %>
 </p>
+
+<b> This player has played <%= @player.matches.size%> matches</b>
 <% if @player.clubowner and !@player.club.nil? %>
 <p>
   <%=@player%> is owner of <%=@player.club %>

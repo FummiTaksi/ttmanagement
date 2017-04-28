@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+
+    <b> Home-player:</b>
+    <%= f.select :player1_id, options_from_collection_for_select(@players, :id, :to_s) %>
+
+
+    <br>
+
+    </br>
+
+    <b> Away-player:</b>
+    <%= f.select :player2_id, options_from_collection_for_select(@players, :id, :to_s) %>
+
   <div class="field">
     <%= f.label :homefirst %><br>
     <%= f.number_field :homefirst %>
@@ -51,6 +63,9 @@
     <%= f.label :awayfifth %><br>
     <%= f.number_field :awayfifth %>
   </div>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

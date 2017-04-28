@@ -5,16 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Homefirst</th>
-      <th>Awayfirst</th>
-      <th>Homesecond</th>
-      <th>Awaysecond</th>
-      <th>Homethird</th>
-      <th>Awaythird</th>
-      <th>Homefourth</th>
-      <th>Awayfourth</th>
-      <th>Homefifth</th>
-      <th>Awayfifth</th>
+      <th>HomePlayer<th>
+      <th>AwayPlayer</th>
+      <th>HomeSets</th>
+      <th>AwaySets</th>
+      <th>Winner</th>
+      <th>Details</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,19 +18,18 @@
   <tbody>
     <% @matches.each do |match| %>
       <tr>
-        <td><%= match.homefirst %></td>
-        <td><%= match.awayfirst %></td>
-        <td><%= match.homesecond %></td>
-        <td><%= match.awaysecond %></td>
-        <td><%= match.homethird %></td>
-        <td><%= match.awaythird %></td>
-        <td><%= match.homefourth %></td>
-        <td><%= match.awayfourth %></td>
-        <td><%= match.homefifth %></td>
-        <td><%= match.awayfifth %></td>
-        <td><%= link_to 'Show', match %></td>
-        <td><%= link_to 'Edit', edit_match_path(match) %></td>
-        <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= match.player1 %></td>
+        <td><%= match.player2 %></td>
+        <td><%=match.homeSets%></td>
+        <td><%=match.awaySets%></td>
+        <td><%=match.winner %></td>
+        <td><%= link_to 'Details', match %></td>
+
+        <% if current_player and current_player.admin %>
+            <td><%= link_to 'Edit', edit_match_path(match) %></td>
+            <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+
       </tr>
     <% end %>
   </tbody>
