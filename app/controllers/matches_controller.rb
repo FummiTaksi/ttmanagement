@@ -26,6 +26,7 @@ class MatchesController < ApplicationController
   # POST /matches.json
   def create
     @match = Match.new(match_params)
+    @players = Player.all
     @homeplayer = @match.player1
     @awayplayer = @match.player2
 
