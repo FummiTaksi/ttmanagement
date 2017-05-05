@@ -38,6 +38,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
   gem 'launchy'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
