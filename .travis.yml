@@ -9,5 +9,4 @@ script:
  - bundle exec rake db:test:prepare
  - bundle exec rspec -fd spec/
 
- services:
-   - postgresql
+ 
