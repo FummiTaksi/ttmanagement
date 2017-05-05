@@ -100,7 +100,7 @@ describe "Player" do
   describe "who is admin " do
 
   before :each do
-    FactoryGirl.create :player4
+    FactoryGirl.create :admin
   end
 
     it "can make player clubowner" do

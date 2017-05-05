@@ -93,7 +93,7 @@ FactoryGirl.define do
     birthday Date.new(2000,10,10)
   end
 
-  factory :player4 , class: Player do
+  factory :admin , class: Player do
     id 4
     firstname "Admin"
     lastname "Admin"

@@ -165,30 +165,6 @@ class Match < ActiveRecord::Base
     sets
   end
 
-  def legit
-    sets = 0
-    if (victorySet(homefirst,awayfirst))
-      sets += 1
-    end
-    if (victorySet(homesecond,awaysecond))
-      sets += 1
-    end
-    if (victorySet(homethird,awaythird))
-      sets += 1
-    end
-    if (victorySet(homefourth, awayfourth))
-      sets += 1
-    end
-    if (victorySet(homefifth, awayfifth))
-      sets += 1
-    end
-    sets
-  end
-
-
-
-
-
 end
 
 

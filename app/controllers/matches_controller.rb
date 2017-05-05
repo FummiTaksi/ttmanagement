@@ -20,6 +20,7 @@ class MatchesController < ApplicationController
 
   # GET /matches/1/edit
   def edit
+    @players = Player.all
   end
 
   # POST /matches
@@ -46,6 +47,7 @@ class MatchesController < ApplicationController
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
   def update
+    @players = Player.all
     respond_to do |format|
       if @match.update(match_params)
         format.html { redirect_to @match, notice: 'Match was successfully updated.' }

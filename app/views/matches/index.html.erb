@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>HomePlayer<th>
-      <th>AwayPlayer</th>
       <th>HomeSets</th>
       <th>AwaySets</th>
       <th>Winner</th>
@@ -28,7 +27,7 @@
         <% if current_player and current_player.admin %>
             <td><%= link_to 'Edit', edit_match_path(match) %></td>
             <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
+        <% end %>
 
       </tr>
     <% end %>
@@ -37,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Match', new_match_path %>
+<%= link_to 'New Match', new_match_path  if current_player and current_player.admin%>

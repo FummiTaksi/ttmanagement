@@ -1,5 +1,14 @@
+<% if current_player and current_player.clubowner %>
+
 <h1>New Membership</h1>
 
 <%= render 'form' %>
+
+    <% else %>
+
+
+    <b>You are not allowed to add player to club!</b>
+
+    <% end %>
 
 <%= link_to 'Back', memberships_path %>

@@ -27,7 +27,7 @@ describe "Club" do
     end
   end
 
-  describe "when club has several players" do
+  describe "which has several players" do
     before :each do
       club = FactoryGirl.create :club
       player = FactoryGirl.create :player

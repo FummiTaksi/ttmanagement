@@ -1,7 +1,16 @@
-<h1>Create a new match</h1>
+<% if current_player and current_player.admin %>
+
+    <h1>Create a new match</h1>
 
 
 
 <%= render 'form' %>
+
+
+    <% else %>
+
+    <b> You are not allowed to create a new match!</b>
+
+    <% end %>
 
 <%= link_to 'Back', matches_path %>

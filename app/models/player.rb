@@ -39,6 +39,16 @@ class Player < ActiveRecord::Base
     matches
   end
 
+  def won_matches
+    won_matches = []
+    matches.each {|match| won_matches.push(match) if match.winner.id == id}
+    won_matches
+  end
+
+  def win_precentage
+     100 * (won_matches.size.to_f / matches.size.to_f)
+  end
+
 
 
  def username
