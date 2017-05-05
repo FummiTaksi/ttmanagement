@@ -15,3 +15,6 @@ toni = Player.create firstname: "Toni", lastname: "Soine", birthday: Date.new(19
                      username: "ToniSoine", password: "Salis", password_confirmation: "Salis", clubowner: true
 ptespoo = Club.create name:"PT-Espoo", city: "Espoo", player_id: toni.id
 ptespoo.players << toni
+
+kimi = Player.create firstname: "Kimi", lastname: "Kivelä", birthday: Date.new(1996, 6, 6),
+                     username: "KimiKivelä", password: "Salis"

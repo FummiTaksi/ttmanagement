@@ -1,4 +1,5 @@
 FactoryGirl.define do
+
   factory :player do
     id 1
     firstname "Jaakko"
@@ -9,13 +10,26 @@ FactoryGirl.define do
     birthday Date.new(2010, 1, 10)
   end
 
+  factory :player2, class: Player do
+    id 2
+    firstname "Pekka"
+    lastname "Pekkanen"
+    password "Salis"
+    password_confirmation "Salis"
+    birthday Date.new(2000,10,10)
+  end
+
   factory :match do
+    id 1
     homefirst 11
     awayfirst 9
     homesecond 12
     awaysecond 10
     homethird 14
     awaythird 12
+    player1_id 1
+    player2_id 2
+
 
     #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
      #                    birthday: Date.new(2030, 6 , 6), id: 100
@@ -26,6 +40,7 @@ FactoryGirl.define do
   end
 
   factory :match2, class: Match do
+    id 2
     homefirst 11
     awayfirst 9
     homesecond 9
@@ -36,6 +51,8 @@ FactoryGirl.define do
     awayfourth 11
     homefifth 5
     awayfifth 11
+    player1_id 1
+    player2_id 2
 
     #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
      #                  birthday: Date.new(2030, 6 , 6), id: 100
@@ -45,6 +62,7 @@ FactoryGirl.define do
   end
 
   factory :match3, class: Match do
+    id 3
     homefirst 11
     awayfirst 7
     homesecond 13
@@ -53,6 +71,9 @@ FactoryGirl.define do
     awaythird 11
     homefourth 11
     awayfourth 4
+    player1_id 1
+    player2_id 2
+
     #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
      #                  birthday: Date.new(2030, 6 , 6), id: 100
     #player2 Player.new firstname:"Pekka", lastname:"Pekkanen", password:"Salis" , password_confirmation:"Salis",
@@ -60,12 +81,15 @@ FactoryGirl.define do
   end
 
   factory :two_same_players, class: Match do
+    id 4
     homefirst 11
     awayfirst 9
     homesecond 12
     awaysecond 10
     homethird 14
     awaythird 12
+    player1_id 1
+    player2_id 1
 
     #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
                       # birthday: Date.new(2030, 6 , 6), id: 100
@@ -74,14 +98,7 @@ FactoryGirl.define do
                        #birthday: Date.new(2030, 6 , 6), id: 100
   end
 
-  factory :player2, class: Player do
-    id 2
-    firstname "Pekka"
-    lastname "Pekkanen"
-    password "Salis"
-    password_confirmation "Salis"
-    birthday Date.new(2000,10,10)
-  end
+
 
   factory :player3 , class: Player do
     id 3
