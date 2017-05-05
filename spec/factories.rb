@@ -17,10 +17,10 @@ FactoryGirl.define do
     homethird 14
     awaythird 12
 
-    player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
-                         birthday: Date.new(2030, 6 , 6), id: 100
-    player2 Player.new firstname:"Pekka", lastname:"Pekkanen", password:"Salis" , password_confirmation:"Salis",
-                          birthday: Date.new(2030, 6 , 6), id: 101
+    #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
+     #                    birthday: Date.new(2030, 6 , 6), id: 100
+    #player2 Player.new firstname:"Pekka", lastname:"Pekkanen", password:"Salis" , password_confirmation:"Salis",
+     #                     birthday: Date.new(2030, 6 , 6), id: 101
 
 
   end
@@ -37,10 +37,10 @@ FactoryGirl.define do
     homefifth 5
     awayfifth 11
 
-    player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
-                       birthday: Date.new(2030, 6 , 6), id: 100
-    player2 Player.new firstname:"Pekka", lastname:"Pekkanen", password:"Salis" , password_confirmation:"Salis",
-                       birthday: Date.new(2030, 6 , 6), id: 101
+    #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
+     #                  birthday: Date.new(2030, 6 , 6), id: 100
+    #player2 Player.new firstname:"Pekka", lastname:"Pekkanen", password:"Salis" , password_confirmation:"Salis",
+     #                  birthday: Date.new(2030, 6 , 6), id: 101
 
   end
 
@@ -53,10 +53,10 @@ FactoryGirl.define do
     awaythird 11
     homefourth 11
     awayfourth 4
-    player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
-                       birthday: Date.new(2030, 6 , 6), id: 100
-    player2 Player.new firstname:"Pekka", lastname:"Pekkanen", password:"Salis" , password_confirmation:"Salis",
-                       birthday: Date.new(2030, 6 , 6), id: 101
+    #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
+     #                  birthday: Date.new(2030, 6 , 6), id: 100
+    #player2 Player.new firstname:"Pekka", lastname:"Pekkanen", password:"Salis" , password_confirmation:"Salis",
+     #                  birthday: Date.new(2030, 6 , 6), id: 101
   end
 
   factory :two_same_players, class: Match do
@@ -67,11 +67,11 @@ FactoryGirl.define do
     homethird 14
     awaythird 12
 
-    player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
-                       birthday: Date.new(2030, 6 , 6), id: 100
+    #player1 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
+                      # birthday: Date.new(2030, 6 , 6), id: 100
 
-    player2 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
-                       birthday: Date.new(2030, 6 , 6), id: 100
+    #player2 Player.new firstname:"Testi", lastname:"Testinen", password:"Salis" , password_confirmation:"Salis",
+                       #birthday: Date.new(2030, 6 , 6), id: 100
   end
 
   factory :player2, class: Player do
