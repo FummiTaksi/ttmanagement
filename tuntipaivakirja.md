@@ -8,7 +8,7 @@ Päivä | Tunnit | Mitä tein
 26.3 | 1,5h | Testejä paranneltu, Membership-oliota alustettu
 27.3 | 0,5h | Muokattu club-viewiä, kirjoitettu testi clubin editoimiselle
 30.3 | 1,5h | Pelaajan poistaminen toimii, lisää testejä ja debugattu koodia
-31.3 | 2,5h |  pelaajan lisääminen clubiin korjattu
+31.3 | 2,5h | pelaajan lisääminen clubiin korjattu
 2.4  | 1,5h | testattu ja koodattu clubiin liittyminen / lähteminen
 6.4  | 1h   | toggle clubowner toteutettu, clubin luominen, testit rikki
 7.4  | 2,5h | testattu clubin toiminnallisuutta lisää, testit läpi
@@ -20,3 +20,4 @@ Päivä | Tunnit | Mitä tein
 28.4 | 7h   | match luokkaa koodattu lisää
 4.5  | 1h   | yritetty korjata travista
 5.5  | 5h   | travis korjattu, lisätty testejä ja muokattu viewejä
+7.5  | 2,5h | coveralls, continous build toteutettu, viewejä muokattu
