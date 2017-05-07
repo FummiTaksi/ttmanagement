@@ -4,6 +4,10 @@ class Player < ActiveRecord::Base
   has_many :matches
   has_secure_password
   validate :birthday_cant_be_in_future
+  validate :name_contains_only_letters
+  validates :firstname, :presence => true
+  validates :lastname, :presence => true
+
 
 
   def count_age
@@ -15,6 +19,14 @@ class Player < ActiveRecord::Base
      end
     age
   end
+
+  def name_contains_only_letters
+    if firstname.nil? or lastname.nil? or firstname[/[a-zA-Z]+/] != firstname or lastname[/[a-zA-Z]+/] != lastname
+      errors.add(:name_contains_only_letters , "! Name must not contain  blank letters, numbers or special letters")
+end
+  end
+
+
 
   def count_age_with_param(day)
     age = day.year - birthday.year

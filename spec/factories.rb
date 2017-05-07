@@ -131,6 +131,8 @@ FactoryGirl.define do
     clubowner true
     birthday Date.new(2000,10,10)
   end
+
+
   factory :membership do
     id 1
     player_id 1

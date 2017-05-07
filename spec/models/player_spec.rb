@@ -65,4 +65,40 @@ RSpec.describe Player, type: :model do
     expect(Player.count).to eq(0)
   end
 
+  it "doesn't register if doesn't have names" do
+    player = Player.create password: "Salis", password_confirmation: "Salis", birthday: Date.new(1960, 6 , 6)
+    expect(player).not_to be_valid
+    expect(Player.count).to eq(0)
+  end
+
+  it "doesn't register if firstname missing" do
+    player = Player.create lastname: "Sukunimi" , password: "Salis", password_confirmation: "Salis", birthday: Date.new(1960, 6 , 6)
+    expect(player).not_to be_valid
+    expect(Player.count).to eq (0)
+  end
+
+  it "doesn't register if lastname missing" do
+    player = Player.create firstname: "Etunimi" , password: "Salis", password_confirmation: "Salis", birthday: Date.new(1960, 6 , 6)
+    expect(player).not_to be_valid
+    expect(Player.count).to eq (0)
+  end
+
+  it "doesn't register if name contains numbers" do
+    player = Player.create firstname: "Etunimi1" , lastname:"Sukunimi", password: "Salis", password_confirmation: "Salis", birthday: Date.new(1960, 6 , 6)
+    expect(player).not_to be_valid
+    expect(Player.count).to eq (0)
+  end
+
+  it "doesn't register ig name contains special letters" do
+    player = Player.create firstname: "Etunimi!" , lastname:"Sukunimi", password: "Salis", password_confirmation: "Salis", birthday: Date.new(1960, 6 , 6)
+    expect(player).not_to be_valid
+    expect(Player.count).to eq (0)
+  end
+
+  it "doesn't refister if name contains blank spaces" do
+    player = Player.create firstname: "Etunimi " , lastname:"Sukunimi", password: "Salis", password_confirmation: "Salis", birthday: Date.new(1960, 6 , 6)
+    expect(player).not_to be_valid
+    expect(Player.count).to eq (0)
+  end
+
 end

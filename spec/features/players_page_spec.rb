@@ -8,26 +8,60 @@ describe "Player" do
   end
 
 
+  describe "is redirected to signup page" do
+
+    before :each do
+      visit signup_path
+    end
+
+    it "with unmatching passwords" do
+      fill_in('player_firstname', with: "Pekka")
+      fill_in('player_lastname', with:"Pekkanen")
+      fill_in('player_password', with:'Secret55')
+      fill_in('player_password_confirmation', with:'Secret54')
+      click_button('Create Player')
+      expect(page).to have_content("Password confirmation doesn't match Password")
+    end
+
+    it " with blank firstname" do
+      fill_in('player_lastname', with: "Lastname")
+      fill_in_matching_passwords
+      click_button('Create Player')
+      expect(page).to have_content "Firstname can't be blank"
+    end
+
+    it "with name containing special letters" do
+      fill_in('player_firstname', with: "Pekka!")
+      fill_in('player_lastname', with:"Pekkanen")
+      fill_in_matching_passwords
+      click_button('Create Player')
+      expect(page).to have_content("Name contains only letters !")
+    end
+
+    it "with name containing blank letter" do
+      fill_in('player_firstname', with: " Pekka")
+      fill_in('player_lastname', with:"Pekkanen")
+      fill_in_matching_passwords
+      click_button('Create Player')
+      expect(page).to have_content("Name contains only letters !")
+    end
+  end
+
   it "can sign up with correct info" do
     visit signup_path
     fill_in('player_firstname', with: "Lol")
     fill_in('player_lastname', with:"Lollero")
-    fill_in('player_password', with:'Secret55')
-    fill_in('player_password_confirmation', with:'Secret55')
+    fill_in_matching_passwords
     expect{
      click_button('Create Player')
     }.to change{Player.count}.by(1)
   end
 
-  it "cant sign up with unmatching passwords" do
-    visit signup_path
-    fill_in('player_firstname', with: "Pekka")
-    fill_in('player_lastname', with:"Pekkanen")
-    fill_in('player_password', with:'Secret55')
-    fill_in('player_password_confirmation', with:'Secret54')
-      click_button('Create Player')
-    expect(page).to have_content("Password confirmation doesn't match Password")
-  end
+
+
+
+
+
 
  ##it "doesn't sign up if birthday is in future" do
    ##visit signup_path
@@ -132,6 +166,11 @@ describe "Player" do
     fill_in('username', with: username)
     fill_in('password', with: password)
     click_button('Log in')
+  end
+
+  def fill_in_matching_passwords
+    fill_in('player_password', with:'Secret55')
+    fill_in('player_password_confirmation', with:'Secret55')
   end
 
 
