@@ -4,8 +4,8 @@ FactoryGirl.define do
     id 1
     firstname "Jaakko"
     lastname "Jaakkonen"
-    password "Salis"
-    password_confirmation "Salis"
+    password "Salasana1"
+    password_confirmation "Salasana1"
     username "JaakkoJaakkonen"
     birthday Date.new(2010, 1, 10)
   end
@@ -14,8 +14,8 @@ FactoryGirl.define do
     id 2
     firstname "Pekka"
     lastname "Pekkanen"
-    password "Salis"
-    password_confirmation "Salis"
+    password "Salasana1"
+    password_confirmation "Salasana1"
     birthday Date.new(2000,10,10)
   end
 
@@ -104,8 +104,8 @@ FactoryGirl.define do
     id 3
     firstname "Matti"
     lastname "Luukkainen"
-    password "Salis"
-    password_confirmation "Salis"
+    password "Salasana1"
+    password_confirmation "Salasana1"
     username "MattiLuukkainen"
     birthday Date.new(2000,10,10)
   end
@@ -114,8 +114,8 @@ FactoryGirl.define do
     id 4
     firstname "Admin"
     lastname "Admin"
-    password "Salis"
-    password_confirmation "Salis"
+    password "Salasana1"
+    password_confirmation "Salasana1"
     username "AdminAdmin"
     admin true
     birthday Date.new(2000,10,10)
@@ -125,8 +125,8 @@ FactoryGirl.define do
     id 5
     firstname "Club"
     lastname "Owner"
-    password "Salis"
-    password_confirmation "Salis"
+    password "Salasana1"
+    password_confirmation "Salasana1"
     username "ClubOwner"
     clubowner true
     birthday Date.new(2000,10,10)

@@ -81,11 +81,11 @@ describe "Match" do
 
 
   def sign_in_as_admin
-    sign_in("AdminAdmin", "Salis")
+    sign_in("AdminAdmin", "Salasana1")
   end
 
   def sign_in_as_regular_user
-    sign_in("JaakkoJaakkonen", "Salis")
+    sign_in("JaakkoJaakkonen", "Salasana1")
   end
 
   def sign_in(username,password)

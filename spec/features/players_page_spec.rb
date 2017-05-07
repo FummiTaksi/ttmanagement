@@ -30,21 +30,6 @@ describe "Player" do
       expect(page).to have_content "Firstname can't be blank"
     end
 
-    it "with name containing special letters" do
-      fill_in('player_firstname', with: "Pekka!")
-      fill_in('player_lastname', with:"Pekkanen")
-      fill_in_matching_passwords
-      click_button('Create Player')
-      expect(page).to have_content("Name contains only letters !")
-    end
-
-    it "with name containing blank letter" do
-      fill_in('player_firstname', with: " Pekka")
-      fill_in('player_lastname', with:"Pekkanen")
-      fill_in_matching_passwords
-      click_button('Create Player')
-      expect(page).to have_content("Name contains only letters !")
-    end
   end
 
   it "can sign up with correct info" do
@@ -91,7 +76,7 @@ describe "Player" do
 
    it "can edit its information" do
      register_as_pekka_pekkanen
-     sign_in("PekkaPekkanen", "Salis")
+     sign_in("PekkaPekkanen", "Salasana1")
      visit players_path
      click_link('Edit')
      fill_in('player_lastname', with: "Peranen")
@@ -102,7 +87,7 @@ describe "Player" do
    end
 
    it "can delete own account" do
-     sign_in("JaakkoJaakkonen", "Salis")
+     sign_in("JaakkoJaakkonen", "Salasana1")
      click_link "Destroy"
      expect(page).to have_content "Player was successfully destroyed."
      expect(Player.count).to eq(0)
@@ -110,12 +95,12 @@ describe "Player" do
 
 
    it "can sign in with correct info" do
-     sign_in("JaakkoJaakkonen", "Salis")
+     sign_in("JaakkoJaakkonen", "Salasana1")
      expect(page).to have_content "Welcome back!"
    end
 
    it "signout redirects to right place" do
-     sign_in("JaakkoJaakkonen", "Salis")
+     sign_in("JaakkoJaakkonen", "Salasana1")
      click_link('Sign out')
      expect(page).to have_content "Listing Clubs"
      expect(page).to have_content "Sign in"
@@ -138,13 +123,12 @@ describe "Player" do
   end
 
     it "can make player clubowner" do
-      sign_in("AdminAdmin", "Salis")
+      sign_in("AdminAdmin", "Salasana1")
       visit players_path
       click_link("Jaakko")
       click_link("make this player a clubowner")
       jaakko = Player.first
       expect(jaakko.clubowner).to eq(true)
-
     end
   end
 

@@ -40,11 +40,13 @@ class ClubsController < ApplicationController
     @club.player_id = current_player.id
 
 
+
     respond_to do |format|
       if @club.save
         format.html { redirect_to @club, notice: 'Club was successfully created.' }
         format.json { render :show, status: :created, location: @club }
       else
+        byebug
         format.html { render :new }
         format.json { render json: @club.errors, status: :unprocessable_entity }
       end
@@ -59,6 +61,7 @@ class ClubsController < ApplicationController
         format.html { redirect_to @club, notice: 'Club was successfully updated.' }
         format.json { render :show, status: :ok, location: @club }
       else
+        @club.errors
         format.html { render :edit }
         format.json { render json: @club.errors, status: :unprocessable_entity }
       end
@@ -79,9 +82,7 @@ class ClubsController < ApplicationController
     @club.players << player
   end
 
-  def clubowner
 
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -91,6 +92,6 @@ class ClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
-      params.require(:club).permit(:name, :city, :clubowner)
+      params.require(:club).permit(:name, :city)
     end
 end

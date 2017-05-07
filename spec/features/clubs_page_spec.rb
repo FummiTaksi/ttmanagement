@@ -19,7 +19,7 @@ describe "Club" do
     end
 
     it "can be destroyed if there is one player" do
-       sign_in("JaakkoJaakkonen", "Salis")
+       sign_in("JaakkoJaakkonen", "Salasana1")
        visit_ttclub_page
        click_link("Destroy")
        expect(page).to have_content "Club was successfully destroyed."
@@ -52,7 +52,7 @@ describe "Club" do
     end
 
     it "can be created" do
-      sign_in("ClubOwner", "Salis")
+      sign_in("ClubOwner", "Salasana1")
       visit clubs_path
       click_link "New Club"
       fill_in('Name', with: "DogeClub")
@@ -63,7 +63,7 @@ describe "Club" do
     end
 
     it "can have more players added" do
-      sign_in("JaakkoJaakkonen", "Salis")
+      sign_in("JaakkoJaakkonen", "Salasana1")
       click_link("Add players to your club")
       select("Pekka Pekkanen", from: 'membership[player_id]')
       click_button "Create Membership"
@@ -81,7 +81,7 @@ describe "Club" do
     end
 
     it "can be edited by clubowner" do
-      sign_in("JaakkoJaakkonen" , "Salis")
+      sign_in("JaakkoJaakkonen" , "Salasana1")
       visit_ttclub_page
       click_link 'Edit Club'
       fill_in('Name',with: "newname")
@@ -91,7 +91,7 @@ describe "Club" do
     end
 
     it "can have more players if clubowner add's them" do
-      sign_in("JaakkoJaakkonen", "Salis")
+      sign_in("JaakkoJaakkonen", "Salasana1")
       click_link "Add players to your club"
       select('Pekka Pekkanen', from:'membership[player_id]')
       click_button "Create Membership"
@@ -100,7 +100,7 @@ describe "Club" do
     end
 
     it "can be left" do
-       sign_in("MattiLuukkainen", "Salis")
+       sign_in("MattiLuukkainen", "Salasana1")
        visit_ttclub_page
        click_button 'Leave this club'
        expect(page).to have_content "Membership was successfully destroyed."
@@ -109,19 +109,19 @@ describe "Club" do
     end
 
     it "cant be left by clubowner" do
-      sign_in("JaakkoJaakkonen","Salis")
+      sign_in("JaakkoJaakkonen","Salasana1")
       visit_ttclub_page
       expect(page).to have_no_content("Leave this club")
     end
 
     it "cant be destroyed by clubowner" do
-      sign_in("JaakkoJaakkonen","Salis")
+      sign_in("JaakkoJaakkonen","Salasana1")
       visit_ttclub_page
       expect(page).to have_no_content("Destroy")
     end
 
     it "cant be destroyed by a member" do
-      sign_in("MattiLuukkainen", "Salis")
+      sign_in("MattiLuukkainen", "Salasana1")
       visit_ttclub_page
       expect(page).to have_no_content("Destroy")
     end

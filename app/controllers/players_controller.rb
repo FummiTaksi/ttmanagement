@@ -22,6 +22,8 @@ class PlayersController < ApplicationController
       @player.admin = false
     end
   end
+
+
   # GET /players/new
   def new
     @player = Player.new
@@ -81,6 +83,7 @@ class PlayersController < ApplicationController
   end
 
   def toggle_clubowner
+
     player = Player.find(params[:id])
     if player.clubowner
       player.clubowner = false
