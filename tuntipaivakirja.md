@@ -19,3 +19,4 @@ Päivä | Tunnit | Mitä tein
 27.4 | 2,5h | match-luokkaa testattu lisää
 28.4 | 7h   | match luokkaa koodattu lisää
 4.5  | 1h   | yritetty korjata travista
+5.5  | 5h   | travis korjattu, lisätty testejä ja muokattu viewejä
