@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :clubs
   resource :session, only: [:new, :create, :destroy]
 
-  root 'clubs#index'
+  root 'players#new'
 
   get 'signin', to: 'sessions#new'
   get 'signout', to: 'sessions#destroy'

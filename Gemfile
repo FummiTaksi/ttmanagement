@@ -25,6 +25,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'coveralls', require: false
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 
 
 # Use ActiveModel has_secure_password

@@ -2,7 +2,7 @@
 
 <h1>Listing Clubs</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,9 +19,9 @@
         <td><%= club.city %></td>
         <td><%=club.players.count%></td>
         <% if current_player and club.player_id == current_player.id %>
-        <td><%= link_to 'Edit', edit_club_path(club) %></td>
+        <td><%= link_to 'Edit', edit_club_path(club), class:'btn btn-primary' %></td>
             <% if club.players.size == 1 %>
-        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } , class:'btn btn-danger'%></td>
              <% end %>
             <% end %>
       </tr>
@@ -31,5 +31,5 @@
 
 <br>
 <% if current_player and current_player.clubowner and current_player.club.nil? %>
-<%= link_to 'New Club', new_club_path %>
+<%= link_to 'New Club', new_club_path, class:'btn btn-primary' %>
 <% end %>

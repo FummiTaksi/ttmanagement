@@ -2,7 +2,7 @@
 <b> <%=@match%></b>
 
 
-<table>
+<table class="table table-hover">
   <thead>
   <tr>
     <th>Player</th>
@@ -45,10 +45,10 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_match_path(@match) if current_player and current_player.admin%>
+<%= link_to 'Edit', edit_match_path(@match), class:'btn btn-primary' if current_player and current_player.admin%>
 <bd></bd>
-<%= link_to 'Back', matches_path %>
+<%= link_to 'Back', matches_path , class:'btn btn-primary' %>
 <bd></bd>
 <% if current_player and current_player.admin %>
-<td><%= link_to 'Destroy', @match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<td><%= link_to 'Destroy', @match, method: :delete, data: { confirm: 'Are you sure?' } , class:'btn btn-danger'%></td>
 <% end %>

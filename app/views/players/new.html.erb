@@ -1,17 +1,31 @@
-<h1>Sign up to TTmanagement, its easy and free :)</h1>
+<h1>Welcome to TTManagement!</h1>
+<% if current_player %>
 
-<strong> Your username will be generated from your name.</strong>
-<br> </br>
-<b>Example:</b>
-<br> </br>
-<b>Firstname: </b> <mark> Mike </mark>
-<br> </br>
-<b>Lastname: </b> <mark> Strongleg </mark>
-<br> </br>
-<b>Generated username: </b> <mark> MikeStrongleg </mark>
+    <p> Link to your page: <%= link_to "#{current_player.to_s}", current_player %> </p>
 
-<br> </br>
+    <% else %>
 
-<%= render 'form' %>
+    <p> Create an account so you can keep track of your matches.</p>
+    <br> </br>
 
-<%= link_to 'Back', players_path %>
+    <p> If you have account,  <%= link_to "Sign in!", signin_path %> </p>
+    <br> </br>
+
+    <strong> Your username will be generated from your name.</strong>
+    <br> </br>
+    <b>Example:</b>
+    <br> </br>
+    <b>Firstname: </b> <mark> Mike </mark>
+    <br> </br>
+    <b>Lastname: </b> <mark> Strongleg </mark>
+    <br> </br>
+    <b>Generated username: </b> <mark> MikeStrongleg </mark>
+
+    <br> </br>
+
+    <%= render 'form' %>
+
+
+    <% end %>
+
+<%= link_to 'Back', players_path, class:'btn btn-primary' %>

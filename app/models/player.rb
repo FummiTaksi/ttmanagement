@@ -44,8 +44,8 @@ class Player < ActiveRecord::Base
   def matches
     matches = Match.all
     playersMatches = []
-    matches.each{ |match| playersMatches.push(match) if match.player1_id == id or match.player2_id == id }
-    matches
+    matches.each{ |match| playersMatches.push(match) if match.player1_id == id or match.player2_id == id  }
+    playersMatches
   end
 
   def won_matches
