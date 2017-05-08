@@ -102,7 +102,7 @@ describe "Player" do
    it "signout redirects to right place" do
      sign_in("JaakkoJaakkonen", "Salasana1")
      click_link('Sign out')
-     expect(page).to have_content "Listing Clubs"
+     expect(page).to have_content "Welcome to TTManagement!"
      expect(page).to have_content "Sign in"
    end
 
