@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :memberships
   resources :players do
     post 'toggle_clubowner', on: :member
+    post 'toggle_admin', on: :member
   end
   resources :clubs
   resource :session, only: [:new, :create, :destroy]

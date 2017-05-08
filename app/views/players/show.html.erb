@@ -40,8 +40,16 @@
     <% end %>
 
 
-<% if current_player and current_player.admin and @player.club.nil? %>
-    <%=  link_to 'make this player a clubowner', toggle_clubowner_player_path(@player.id), method: :post if !@player.clubowner %>
+<% if current_player and current_player.admin %>
+    <% if @player.club.nil? %>
+        <%=  link_to 'make this player a clubowner', toggle_clubowner_player_path(@player.id), method: :post if !@player.clubowner %>
+    <% end %>
+    <br></br>
+
+        <%= link_to 'Toggle admin', toggle_admin_player_path(@player.id), method: :post %>
+
+
+
 
 <% end %>
 

@@ -16,12 +16,18 @@ class PlayersController < ApplicationController
 
 
   def toggle_admin
-    if @player.admin
-      @player.admin = false
+    player = Player.find(params[:id])
+    if player.admin
+      player.admin = false
     else
-      @player.admin = false
+      player.admin = true
     end
+    player.save
+    new_status = player.clubowner ? "Admin" : "Not Admin"
+    redirect_to :back, notice: "This users status changed to #{new_status}"
   end
+
+
 
 
   # GET /players/new

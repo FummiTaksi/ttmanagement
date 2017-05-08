@@ -120,16 +120,32 @@ describe "Player" do
 
   before :each do
     FactoryGirl.create :admin
+    FactoryGirl.create :admin2
+    sign_in("AdminAdmin", "Salasana1")
+    visit players_path
   end
 
     it "can make player clubowner" do
-      sign_in("AdminAdmin", "Salasana1")
-      visit players_path
       click_link("Jaakko")
       click_link("make this player a clubowner")
       jaakko = Player.first
       expect(jaakko.clubowner).to eq(true)
     end
+
+    it "can make player admin" do
+      click_link("Jaakko")
+      click_link("Toggle admin")
+      jaakko = Player.first
+      expect(jaakko.admin).to eq true
+    end
+
+    it "can make player not-admin" do
+      click_link("2")
+      click_link("Toggle admin")
+      admin2 = Player.find_by id: 6
+      expect(admin2.admin).to eq false
+    end
+
   end
 
   def register_as_pekka_pekkanen
