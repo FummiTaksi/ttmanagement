@@ -3,6 +3,24 @@ require 'rails_helper'
 
 describe "Club" do
 
+  before :each do
+    player2 = FactoryGirl.create :player2
+  end
+
+
+  it "can't be created if you are not signed in " do
+    visit new_club_path
+    expect(page).not_to have_button "Create Club"
+    expect(page).to have_content "You don't have permission to create a club!"
+  end
+
+  it "can't be created if you are signed in as a regular user" do
+    sign_in("PekkaPekkanen", "Salasana1")
+    visit new_club_path
+    expect(page).not_to have_button "Create Club"
+    expect(page).to have_content "You don't have permission to create a club!"
+  end
+
 
   describe "when club has one player" do
     before :each do
@@ -25,13 +43,27 @@ describe "Club" do
        expect(page).to have_content "Club was successfully destroyed."
        expect(Club.count).to eq( 0)
     end
+
+    it "can't be destroyed by regular user" do
+      sign_in("PekkaPekkanen","Salasana1")
+      visit_ttclub_page
+      expect(page).not_to have_content "Destroy"
+    end
+
+    it "can't be edited by regular user" do
+      visit edit_club_path(Club.first)
+      expect(page).not_to have_content "Edit Club"
+      expect(page).to have_content "You are not allowed to edit this club!"
+    end
+
   end
+
+
 
   describe "which has several players" do
     before :each do
       club = FactoryGirl.create :club
       player = FactoryGirl.create :player
-      player2 = FactoryGirl.create :player2
       player3 = FactoryGirl.create :player3
       clubowner = FactoryGirl.create :clubowner
       membership = FactoryGirl.create :membership
@@ -150,8 +182,7 @@ describe "Club" do
   end
 
   def visit_ttclub_page
-    visit clubs_path
-    click_link "ttclub"
+    visit club_path(Club.first)
   end
 
   def make_jaakko_clubowner

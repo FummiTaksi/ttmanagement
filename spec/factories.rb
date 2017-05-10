@@ -14,6 +14,9 @@ FactoryGirl.define do
     id 2
     firstname "Pekka"
     lastname "Pekkanen"
+    username "PekkaPekkanen"
+    admin false
+    clubowner false
     password "Salasana1"
     password_confirmation "Salasana1"
     birthday Date.new(2000,10,10)

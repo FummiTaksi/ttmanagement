@@ -1,6 +1,11 @@
-<h1>Editing Club</h1>
 
-<%= render 'form' %>
+<%if current_player and @club.clubowner == current_player %>
+    <h1>Edit your club!</h1>
 
-<%= link_to 'Show', @club %> |
-<%= link_to 'Back', clubs_path %>
+    <%= render 'form' %>
+    <% else %>
+    <h1>You are not allowed to edit this club!</h1>
+    <% end %>
+
+
+<%= link_to 'Back', clubs_path, class: "btn btn-primary" %>
