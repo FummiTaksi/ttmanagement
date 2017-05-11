@@ -3,11 +3,27 @@ require 'rails_helper'
 
 describe "Match" do
 
+  before :each do
+    FactoryGirl.create :player
+    FactoryGirl.create :player2
+    FactoryGirl.create :match
+  end
+
+  it "can't be created by guest" do
+    visit new_match_path
+    expect(page).not_to have_button "Create Match"
+    expect(page).to have_content "You are not allowed to create a new match!"
+  end
+
+  it "can't be edited by guest" do
+    visit edit_match_path(Match.first)
+    expect(page).not_to have_button "Update Match"
+    expect(page).to have_content "You are not allowed to edit match!"
+  end
+
   describe "by admin " do
     before :each do
       FactoryGirl.create :admin
-      FactoryGirl.create :player
-      FactoryGirl.create :player2
       sign_in_as_admin
       click_link("Add new match")
     end
@@ -15,7 +31,7 @@ describe "Match" do
     it "can't be created with nothing added" do
       click_button("Create Match")
       expect(page).to have_content("Cant have blank sets at start , first three sets cant be blank!")
-      expect(Match.count).to eq 0
+      expect(Match.count).to eq 1
     end
 
     it "can't be created with two same players" do
@@ -24,7 +40,7 @@ describe "Match" do
       fill_in_right_match_credentials
       click_button("Create Match")
       expect(page).to have_content("Player cant be same , must be different players!")
-      expect(Match.count).to eq 0
+      expect(Match.count).to eq 1
     end
 
     it "cant be created if result is not valid" do
@@ -35,13 +51,13 @@ describe "Match" do
       fill_in('Awayfourth', with: "11")
       click_button("Create Match")
       expect(page).to have_content "Sets played after match has ended"
-      expect(Match.count).to eq 0
+      expect(Match.count).to eq 1
     end
 
     it "can be created with right parametres" do
       create_legit_match
       expect(page).to have_content("Pekka Pekkanen - Jaakko Jaakkonen 3 - 0")
-      expect(Match.count).to eq 1
+      expect(Match.count).to eq 2
     end
 
     it "can be edited to correct result" do
@@ -49,7 +65,7 @@ describe "Match" do
       edit_legit_match
       fill_in("Awayfirst", with: 5)
       click_button("Update Match")
-      expect(Match.first.awayfirst).to eq 5
+      expect(Match.last.awayfirst).to eq 5
     end
 
     it "cant be edited to uncorrect result" do
@@ -59,22 +75,37 @@ describe "Match" do
       fill_in("Homefourth", with: 11)
       fill_in("Awayfourth", with: 13)
       expect(page).to have_content "Editing Match"
-      expect(Match.first.homefourth).to eq nil
-      expect(Match.first.awayfirst).to eq 7
+      expect(Match.last.homefourth).to eq nil
+      expect(Match.last.awayfirst).to eq 7
     end
 
     it "can be destroyed" do
       create_legit_match
       click_link "Destroy"
-      expect(Match.count).to eq 0
+      expect(Match.count).to eq 1
     end
   end
 
-  describe "as a regular user" do
+  describe "by a regular user" do
+
     it "the link to create a match on the main menu is hidden" do
       sign_in_as_regular_user
       expect(page).not_to have_content "Add new match"
     end
+
+    it "can't be created" do
+      visit new_match_path
+      expect(page).not_to have_button "Create Match"
+      expect(page).to have_content "You are not allowed to create a new match!"
+    end
+
+    it "can't be edited" do
+      visit edit_match_path(Match.first)
+      expect(page).not_to have_button "Update Match"
+      expect(page).to have_content "You are not allowed to edit match!"
+    end
+
+
   end
 
 

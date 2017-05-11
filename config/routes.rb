@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :matches
-  resources :memberships
+  resources :memberships, only: [:new, :create, :destroy]
   resources :players do
     post 'toggle_clubowner', on: :member
     post 'toggle_admin', on: :member

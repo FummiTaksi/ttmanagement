@@ -5,6 +5,21 @@ describe "Player" do
 
   before :each do
      FactoryGirl.create :player
+     FactoryGirl.create :player3
+
+  end
+
+  it "can't be edited by guest" do
+    visit edit_player_path(Player.first)
+    expect(page).not_to have_button "Update Player"
+    expect(page).to have_content("You are not allowed to edit this player!")
+  end
+
+  it "can't be edited by regular user" do
+    sign_in("MattiLuukkainen", "Salasana1")
+    visit edit_player_path(Player.first)
+    expect(page).not_to have_button "Update Player"
+    expect(page).to have_content("You are not allowed to edit this player!")
   end
 
 
@@ -90,7 +105,7 @@ describe "Player" do
      sign_in("JaakkoJaakkonen", "Salasana1")
      click_link "Destroy"
      expect(page).to have_content "Player was successfully destroyed."
-     expect(Player.count).to eq(0)
+     expect(Player.count).to eq(1)
    end
 
 

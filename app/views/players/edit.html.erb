@@ -1,6 +1,13 @@
+<% if current_player and current_player == @player %>
+
+
 <h1>Editing Player</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @player, class:'btn btn-primary' %> |
+    <% else %>
+    <h1>You are not allowed to edit this player!</h1>
+    <% end %>
+<br>
+
 <%= link_to 'Back', players_path, class:'btn btn-primary' %>
