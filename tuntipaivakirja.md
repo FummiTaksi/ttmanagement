@@ -24,3 +24,4 @@ Päivä | Tunnit | Mitä tein
 7.5  | 2,5h | toteutettu ja testattu pelaajan ja clubin validoinnit
 8.5  | 2h   | Parannettu fronttia, kirjoitettu testejä 
 10.5 | 1,5h | Validoitu club viewit 
+11.5 | 2,5h | kaikki viewit validoitu ja testattu
