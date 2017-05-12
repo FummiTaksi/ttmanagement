@@ -25,3 +25,4 @@ Päivä | Tunnit | Mitä tein
 8.5  | 2h   | Parannettu fronttia, kirjoitettu testejä 
 10.5 | 1,5h | Validoitu club viewit 
 11.5 | 2,5h | kaikki viewit validoitu ja testattu
+12.5 | 3h   | poistettu bugi matcheihin ja clubeihin liittyen.
