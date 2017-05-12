@@ -78,6 +78,11 @@ class PlayersController < ApplicationController
   # DELETE /players/1.json
   def destroy
     if @player.username == current_player.username
+      if @player.clubowner  and !@player.club.nil?
+        @player.club.destroy
+      end
+      matches = Match.all
+      matches.each{|match| match.destroy if match.player1_id == @player.id or match.player2_id == @player.id}
       @player.destroy
       respond_to do |format|
       format.html { redirect_to players_url, notice: 'Player was successfully destroyed.' }

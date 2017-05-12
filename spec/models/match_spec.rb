@@ -25,6 +25,8 @@ RSpec.describe Match, type: :model do
       expect(match3.homeSets).to eq 3
       expect(match3.awaySets).to eq 1
     end
+
+
   end
 
   describe "is not created with" do

@@ -21,6 +21,13 @@ describe "Match" do
     expect(page).to have_content "You are not allowed to edit match!"
   end
 
+  it "is destroyed if player deletes account" do
+    sign_in("JaakkoJaakkonen", "Salasana1")
+    visit player_path(Player.first)
+    click_link "Destroy"
+    expect(Match.count).to eq 0
+  end
+
   describe "by admin " do
     before :each do
       FactoryGirl.create :admin
@@ -84,6 +91,7 @@ describe "Match" do
       click_link "Destroy"
       expect(Match.count).to eq 1
     end
+
   end
 
   describe "by a regular user" do
@@ -141,6 +149,7 @@ describe "Match" do
     fill_in_right_match_credentials
     click_button("Create Match")
   end
+
   def edit_legit_match
     click_link("Edit")
     select('Pekka Pekkanen', from:'match[player1_id]')

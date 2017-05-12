@@ -25,9 +25,9 @@
 
 <% if current_player and current_player == @club.clubowner %>
     <%= link_to 'Edit Club', edit_club_path(@club), class: "btn btn-primary" %>
-     <%if  @club.players.size == 1 %>
-        <td><%= link_to 'Destroy', @club, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-        <% end %>
+
+    <td><%= link_to 'Destroy', @club, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+
 
 <% end %>
 

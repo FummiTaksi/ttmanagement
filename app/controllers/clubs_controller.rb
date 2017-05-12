@@ -71,7 +71,10 @@ class ClubsController < ApplicationController
   # DELETE /clubs/1
   # DELETE /clubs/1.json
   def destroy
-    @club.destroy
+
+      @club.players.each{|player| player.club_id = nil , player.save}
+      @club.destroy
+
     respond_to do |format|
       format.html { redirect_to clubs_url, notice: 'Club was successfully destroyed.' }
       format.json { head :no_content }
@@ -80,6 +83,10 @@ class ClubsController < ApplicationController
 
   def add_player(player)
     @club.players << player
+  end
+
+  def remove_player(player)
+    @club.players >> player
   end
 
 

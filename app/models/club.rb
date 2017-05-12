@@ -1,5 +1,5 @@
 class Club < ActiveRecord::Base
-  has_many :players
+  has_many :players , :dependent => :nullify
   has_many :memberships
 
   validates :name, :presence => true
@@ -12,7 +12,5 @@ class Club < ActiveRecord::Base
   def clubowner
     Player.find_by id: player_id
   end
-
-
 
 end

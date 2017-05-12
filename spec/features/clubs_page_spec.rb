@@ -5,6 +5,7 @@ describe "Club" do
 
   before :each do
     player2 = FactoryGirl.create :player2
+    clubowner = FactoryGirl.create :clubowner
   end
 
 
@@ -21,12 +22,22 @@ describe "Club" do
     expect(page).to have_content "You don't have permission to create a club!"
   end
 
+  it "can be created" do
+    sign_in("ClubOwner", "Salasana1")
+    visit clubs_path
+    click_link "New Club"
+    fill_in('Name', with: "DogeClub")
+    fill_in('City', with: "Herttoniemi")
+    click_button("Create Club")
+    expect(Club.count).to eq(1)
+    expect(page).to have_content "Club was successfully created."
+  end
 
-  describe "when club has one player" do
+
+  describe "which has one player" do
     before :each do
       club = FactoryGirl.create :club
       player = FactoryGirl.create :player
-      clubowner = FactoryGirl.create :clubowner
       membership = FactoryGirl.create :membership
       membership2 = FactoryGirl.create :membership2
       player.clubowner = true
@@ -36,13 +47,16 @@ describe "Club" do
       club.save
     end
 
-    it "can be destroyed if there is one player" do
+    it "can be destroyed" do
        sign_in("JaakkoJaakkonen", "Salasana1")
-       visit_ttclub_page
+       visit club_path(Club.first)
        click_link("Destroy")
        expect(page).to have_content "Club was successfully destroyed."
-       expect(Club.count).to eq( 0)
+       expect(Club.count).to eq(0)
+       expect(Player.first.club_id).to eq nil
     end
+
+
 
     it "can't be destroyed by regular user" do
       sign_in("PekkaPekkanen","Salasana1")
@@ -65,7 +79,6 @@ describe "Club" do
       club = FactoryGirl.create :club
       player = FactoryGirl.create :player
       player3 = FactoryGirl.create :player3
-      clubowner = FactoryGirl.create :clubowner
       membership = FactoryGirl.create :membership
       membership2 = FactoryGirl.create :membership2
       player.clubowner = true
@@ -83,15 +96,14 @@ describe "Club" do
       expect(page).to have_content "ttclub"
     end
 
-    it "can be created" do
-      sign_in("ClubOwner", "Salasana1")
-      visit clubs_path
-      click_link "New Club"
-      fill_in('Name', with: "DogeClub")
-      fill_in('City', with: "Herttoniemi")
-      click_button("Create Club")
-      expect(Club.count).to eq(2)
-      expect(page).to have_content "Club was successfully created."
+
+
+    it "can be destroyed" do
+      sign_in("JaakkoJaakkonen", "Salasana1")
+      visit club_path(Club.first)
+      click_link "Destroy"
+      expect(Club.count).to eq 0
+      expect(Player.third.club_id).to eq nil
     end
 
     it "can have more players added" do
@@ -146,11 +158,6 @@ describe "Club" do
       expect(page).to have_no_content("Leave this club")
     end
 
-    it "cant be destroyed by clubowner" do
-      sign_in("JaakkoJaakkonen","Salasana1")
-      visit_ttclub_page
-      expect(page).to have_no_content("Destroy")
-    end
 
     it "cant be destroyed by a member" do
       sign_in("MattiLuukkainen", "Salasana1")
