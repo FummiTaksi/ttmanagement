@@ -6,7 +6,8 @@ https://afternoon-badlands-18041.herokuapp.com/
 
 [![Coverage Status](https://coveralls.io/repos/github/FummiTaksi/ttmanagement/badge.svg?branch=master)](https://coveralls.io/github/FummiTaksi/ttmanagement?branch=master)
 
-DATAMALLI: https://yuml.me/dad7d55b
+DATAMALLI: https://yuml.me/f701be4e
+
 Features:
 
 1) User can sign up to system
