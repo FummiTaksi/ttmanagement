@@ -18,7 +18,7 @@
         <td><%= link_to club.name,club %></td>
         <td><%= club.city %></td>
         <td><%=club.players.count%></td>
-        <% if current_player and club.player_id == current_player.id %>
+        <% if current_player and club.player_id == current_player.id and current_player.clubowner %>
         <td><%= link_to 'Edit', edit_club_path(club), class:'btn btn-primary' %></td>
             <% if club.players.size == 1 %>
         <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } , class:'btn btn-danger'%></td>

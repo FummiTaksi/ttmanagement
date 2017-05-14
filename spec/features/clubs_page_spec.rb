@@ -9,17 +9,19 @@ describe "Club" do
   end
 
 
+
+
   it "can't be created if you are not signed in " do
     visit new_club_path
     expect(page).not_to have_button "Create Club"
-    expect(page).to have_content "You don't have permission to create a club!"
+    expect(page).to have_content "You are not allowed to create a club!"
   end
 
   it "can't be created if you are signed in as a regular user" do
     sign_in("PekkaPekkanen", "Salasana1")
     visit new_club_path
     expect(page).not_to have_button "Create Club"
-    expect(page).to have_content "You don't have permission to create a club!"
+    expect(page).to have_content "You are not allowed to create a club!"
   end
 
   it "can be created" do
@@ -134,14 +136,7 @@ describe "Club" do
       expect(page).to have_content "newname"
     end
 
-    it "can have more players if clubowner add's them" do
-      sign_in("JaakkoJaakkonen", "Salasana1")
-      click_link "Add players to your club"
-      select('Pekka Pekkanen', from:'membership[player_id]')
-      click_button "Create Membership"
-      expect(page).to have_content "Membership was successfully created."
-      expect(page).to have_content "Total of players: 3"
-    end
+
 
     it "can be left" do
        sign_in("MattiLuukkainen", "Salasana1")

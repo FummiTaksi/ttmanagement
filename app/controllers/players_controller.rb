@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_access, only: [:edit, :update, :create, :destroy]
+  skip_before_action :require_admin, only: [:show, :index, :new, :edit, :destroy, :update, :create]
 
 
   # GET /players
@@ -42,6 +42,10 @@ class PlayersController < ApplicationController
 
   # GET /players/1/edit
   def edit
+    if !current_player or current_player != @player
+      flash[:error] = "You are not allowed to edit this player!"
+      redirect_to player_path(@player)
+    end
   end
 
 
@@ -128,9 +132,7 @@ class PlayersController < ApplicationController
       @player = Player.find(params[:id])
     end
 
-  def ensure_access
 
-  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params

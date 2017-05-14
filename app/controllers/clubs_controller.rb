@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
 
   before_action :set_club, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_admin, only: [:show, :index, :edit, :new, :update, :create, :destroy]
 
   # GET /clubs
   # GET /clubs.json
@@ -24,12 +25,22 @@ class ClubsController < ApplicationController
 
   # GET /clubs/new
   def new
-    @club = Club.new
-    @players = Player.all
+    if  !clubowner_signed_in or !current_player.club_id.nil?
+      flash[:error] = "You are not allowed to create a club!"
+      redirect_to clubs_path
+    else
+      @club = Club.new
+      @players = Player.all
+    end
+
   end
 
   # GET /clubs/1/edit
   def edit
+    if !clubowner_signed_in or !current_player or current_player.club_id != @club.id
+      flash[:error] = "You are not allowed to edit this club!"
+      redirect_to club_path(@club)
+    end
   end
 
   # POST /clubs
@@ -46,7 +57,6 @@ class ClubsController < ApplicationController
         format.html { redirect_to @club, notice: 'Club was successfully created.' }
         format.json { render :show, status: :created, location: @club }
       else
-        byebug
         format.html { render :new }
         format.json { render json: @club.errors, status: :unprocessable_entity }
       end
@@ -88,6 +98,8 @@ class ClubsController < ApplicationController
   def remove_player(player)
     @club.players >> player
   end
+
+
 
 
 

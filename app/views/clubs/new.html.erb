@@ -1,12 +1,8 @@
-<% if current_player and current_player.clubowner and current_player.club.nil? %>
+
 
 
 <h1>New Club</h1>
 
 <%= render 'form' %>
 
-    <% else %>
-
-    <h1>You don't have permission to create a club!</h1>
-<% end %>
 <%= link_to 'Back', clubs_path, class: "btn btn-primary" %>

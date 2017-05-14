@@ -14,13 +14,13 @@ describe "Match" do
   it "can't be created by guest" do
     visit new_match_path
     expect(page).not_to have_button "Create Match"
-    expect(page).to have_content "You are not allowed to create a new match!"
+    expect(page).to have_content "You must be admin to access this section"
   end
 
   it "can't be edited by guest" do
     visit edit_match_path(Match.first)
     expect(page).not_to have_button "Update Match"
-    expect(page).to have_content "You are not allowed to edit match!"
+    expect(page).to have_content "You must be admin to access this section"
   end
 
   it "is destroyed if player deletes account" do
@@ -109,13 +109,13 @@ describe "Match" do
     it "can't be created" do
       visit new_match_path
       expect(page).not_to have_button "Create Match"
-      expect(page).to have_content "You are not allowed to create a new match!"
+      expect(page).to have_content "You must be admin to access this section"
     end
 
     it "can't be edited" do
       visit edit_match_path(Match.first)
       expect(page).not_to have_button "Update Match"
-      expect(page).to have_content "You are not allowed to edit match!"
+      expect(page).to have_content "You must be admin to access this section"
     end
 
 

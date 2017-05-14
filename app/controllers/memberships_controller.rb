@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_admin, only: [:new, :create, :destroy]
 
   # GET /memberships
   # GET /memberships.json
@@ -14,9 +15,15 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
-    @membership = Membership.new
-    @players = Player.all.select {|player| player.club_id.nil?}
-    @club = current_player.club
+    if !clubowner_signed_in or current_player.club.nil?
+      flash[:error] = "You have no acces to this section!"
+      redirect_to root_path
+    else
+      @membership = Membership.new
+      @players = Player.all.select {|player| player.club_id.nil?}
+      @club = current_player.club
+    end
+
   end
 
   # GET /memberships/1/edit

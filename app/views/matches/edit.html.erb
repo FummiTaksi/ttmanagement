@@ -1,11 +1,5 @@
-<% if current_player and current_player.admin %>
 
 <h1>Editing Match</h1>
-
 <%= render 'form' %>
-
-    <% else %>
-    <h1>You are not allowed to edit match!</h1>
-    <% end %>
 <br>
 <%= link_to 'Back', matches_path , class: "btn btn-primary"%>
