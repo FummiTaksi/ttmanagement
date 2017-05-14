@@ -6,6 +6,12 @@ Ruusuja:
 
 -Testasin ahkerasti uutta toiminnallisuutta ja ylläpidin testejä loppuun asti.
 
+-Testausperiaate: Kaikki toiminnallisuus testattu. Kattavat yksikkö ja selaintestit. 
+
+-Osa koodista tehty TDD-periaatteella
+
+-Hyvät testit auttoivat bugien korjaamista ja ohjelman ylläpitämistä. 
+
 -Työtä tehty tasaisesti periodin mittaan
 
 Risuja:
