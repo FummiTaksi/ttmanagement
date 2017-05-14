@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Match, type: :model do
+  let(:player){FactoryGirl.create(:player)}
+  let(:player2){FactoryGirl.create(:player2)}
   describe "with a proper result" do
     let(:match){ FactoryGirl.create(:match) }
     let(:match2){ FactoryGirl.create(:match2) }
     let(:match3){ FactoryGirl.create(:match3) }
+
 
 
 
@@ -26,12 +29,23 @@ RSpec.describe Match, type: :model do
       expect(match3.awaySets).to eq 1
     end
 
+    it "returns right winner with player1" do
+      match.player1 = player
+      match.player2 = player2
+      expect(match.winner.firstname).to eq "Jaakko"
+    end
+
+    it "returns right winner with player2" do
+      match2.player1 = player
+      match2.player2 = player2
+      expect(match2.winner.firstname).to eq "Pekka"
+    end
+
 
   end
 
   describe "is not created with" do
-    let(:player){FactoryGirl.create(:player)}
-    let(:player2){FactoryGirl.create(:player2)}
+
 
     it "two same players" do
       match = Match.create homefirst: 11, awayfirst: 0, homesecond: 11 , awaysecond: 0,

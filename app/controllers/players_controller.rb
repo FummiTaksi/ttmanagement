@@ -116,7 +116,6 @@ class PlayersController < ApplicationController
     withsamelastname = withsamefirstname.where lastname:@player.lastname
     if  not withsamelastname.empty?
       @player.username = "#{@player.firstname}#{@player.lastname}#{withsamelastname.size + 1}"
-      @player.save
     end
 
   end

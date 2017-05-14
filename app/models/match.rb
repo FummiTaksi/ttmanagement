@@ -137,6 +137,7 @@ class Match < ActiveRecord::Base
         awayfifth
       end
     end
+
   def winner
     if homeSets == 3
       return player1

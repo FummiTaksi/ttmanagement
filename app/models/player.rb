@@ -55,7 +55,12 @@ class Player < ActiveRecord::Base
   end
 
   def win_precentage
-     100 * (won_matches.size.to_f / matches.size.to_f)
+     if matches.size == 0
+       0
+     else
+       100 * (won_matches.size.to_f / matches.size.to_f)
+     end
+
   end
 
 

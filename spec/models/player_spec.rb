@@ -10,6 +10,10 @@ RSpec.describe Player, type: :model do
       expect(Player.count).to eq(1)
     end
 
+    it "returns win prectenatage 0 if no matches played" do
+      expect(player.win_precentage).to eq 0
+    end
+
   #  it "has correct username" do
    #   expect(player.username).to eq("JaakkoJaakkonen")
    # end
@@ -51,6 +55,30 @@ RSpec.describe Player, type: :model do
 
 
 
+  describe "with matches played" do
+
+    before :each do
+      player =  FactoryGirl.create(:player)
+      player2 = FactoryGirl.create(:player2)
+      match = FactoryGirl.create(:match)
+      match2 = FactoryGirl.create(:match2)
+      match.player1 = player
+      match.player2 = player2
+
+      match2.player1 = player
+      match2.player2 = player2
+    end
+
+
+
+    it "counts average win precentage right" do
+      expect(Player.first.win_precentage).to eq 50
+    end
+
+  end
+
+
+
   it "doesnt register with unmatching passwords" do
     player =  Player.create firstname:"Jaakko", lastname:"Jaakkonen", password:"Salasana1" , password_confirmation:"Salasana2",
                                     birthday: Date.new(1960, 6 , 6)
@@ -82,6 +110,8 @@ RSpec.describe Player, type: :model do
     expect(player).not_to be_valid
     expect(Player.count).to eq (0)
   end
+
+
 
 
 
