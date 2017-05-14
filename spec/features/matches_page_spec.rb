@@ -6,6 +6,8 @@ describe "Match" do
   before :each do
     FactoryGirl.create :player
     FactoryGirl.create :player2
+    FactoryGirl.create :player_with_club1
+    FactoryGirl.create :player_with_club2
     FactoryGirl.create :match
   end
 
@@ -35,6 +37,10 @@ describe "Match" do
       click_link("Add new match")
     end
 
+
+
+
+
     it "can't be created with nothing added" do
       click_button("Create Match")
       expect(page).to have_content("Cant have blank sets at start , first three sets cant be blank!")
@@ -42,8 +48,8 @@ describe "Match" do
     end
 
     it "can't be created with two same players" do
-      select('Pekka Pekkanen', from:'match[player1_id]')
-      select('Pekka Pekkanen', from:'match[player2_id]')
+      select('I Am', from:'match[player1_id]')
+      select('I Am', from:'match[player2_id]')
       fill_in_right_match_credentials
       click_button("Create Match")
       expect(page).to have_content("Player cant be same , must be different players!")
@@ -51,8 +57,7 @@ describe "Match" do
     end
 
     it "cant be created if result is not valid" do
-      select('Pekka Pekkanen', from:'match[player1_id]')
-      select('Jaakko Jaakkonen', from: 'match[player2_id]')
+      select_valid_players
       fill_in_right_match_credentials
       fill_in('Homefourth', with: "9")
       fill_in('Awayfourth', with: "11")
@@ -63,7 +68,7 @@ describe "Match" do
 
     it "can be created with right parametres" do
       create_legit_match
-      expect(page).to have_content("Pekka Pekkanen - Jaakko Jaakkonen 3 - 0")
+      expect(page).to have_content("I Am - In Club 3 - 0")
       expect(Match.count).to eq 2
     end
 
@@ -144,15 +149,18 @@ describe "Match" do
   end
 
   def create_legit_match
-    select('Pekka Pekkanen', from:'match[player1_id]')
-    select('Jaakko Jaakkonen', from: 'match[player2_id]')
+    select_valid_players
     fill_in_right_match_credentials
     click_button("Create Match")
   end
 
   def edit_legit_match
     click_link("Edit")
-    select('Pekka Pekkanen', from:'match[player1_id]')
-    select('Jaakko Jaakkonen', from: 'match[player2_id]')
+    select_valid_players
+  end
+
+  def select_valid_players
+    select('I Am', from:'match[player1_id]')
+    select('In Club', from: 'match[player2_id]')
   end
 end

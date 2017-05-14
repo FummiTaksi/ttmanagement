@@ -60,9 +60,9 @@ class Player < ActiveRecord::Base
 
 
 
- def username
-   "#{firstname}#{lastname}"
- end
+ #def username
+  # "#{firstname}#{lastname}"
+ #end
 
 
 

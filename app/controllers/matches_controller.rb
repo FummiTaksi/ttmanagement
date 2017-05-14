@@ -15,7 +15,8 @@ class MatchesController < ApplicationController
   # GET /matches/new
   def new
     @match = Match.new
-    @players = Player.all
+    notclub = Player.where club_id:nil
+    @players = Player.all - notclub
   end
 
   # GET /matches/1/edit

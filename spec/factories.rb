@@ -146,6 +146,30 @@ FactoryGirl.define do
     birthday Date.new(2000,10,10)
   end
 
+  factory :player_with_club1, class: Player do
+    id 6
+    club_id 1
+    firstname "I"
+    lastname "Am"
+    password "Salasana1"
+    password_confirmation "Salasana1"
+    username "IAm"
+    birthday Date.new(2000,10,10)
+  end
+
+  factory :player_with_club2, class: Player do
+    id 7
+    club_id 1
+    firstname "In"
+    lastname "Club"
+    password "Salasana1"
+    password_confirmation "Salasana1"
+    username "InClub"
+    birthday Date.new(2000,10,10)
+  end
+
+
+
 
   factory :membership do
     id 1

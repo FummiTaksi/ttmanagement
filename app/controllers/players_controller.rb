@@ -17,7 +17,7 @@ class PlayersController < ApplicationController
 
 
   def toggle_admin
-    
+
     if current_player and current_player.admin
       player = Player.find(params[:id])
       if player.admin
@@ -52,8 +52,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     @player.admin = false
     @player.clubowner = false
-    @player.username = "#{@player.firstname}#{@player.lastname}"
-
+    generate_username
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
@@ -110,6 +109,18 @@ class PlayersController < ApplicationController
     new_status = player.clubowner ? "clubowner" : "not clubowner"
     redirect_to :back, notice: "This users status changed to #{new_status}"
   end
+
+  def generate_username
+    @player.username = "#{@player.firstname}#{@player.lastname}"
+    withsamefirstname = Player.where firstname:@player.firstname
+    withsamelastname = withsamefirstname.where lastname:@player.lastname
+    if  not withsamelastname.empty?
+      @player.username = "#{@player.firstname}#{@player.lastname}#{withsamelastname.size + 1}"
+      @player.save
+    end
+
+  end
+
 
 
   private

@@ -10,9 +10,9 @@ RSpec.describe Player, type: :model do
       expect(Player.count).to eq(1)
     end
 
-    it "has correct username" do
-      expect(player.username).to eq("JaakkoJaakkonen")
-    end
+  #  it "has correct username" do
+   #   expect(player.username).to eq("JaakkoJaakkonen")
+   # end
 
     it "has correct toString" do
       expect(player.to_s).to eq("Jaakko Jaakkonen")

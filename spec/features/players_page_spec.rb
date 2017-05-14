@@ -22,6 +22,16 @@ describe "Player" do
     expect(page).to have_content("You are not allowed to edit this player!")
   end
 
+  it "regenerates unique username" do
+    visit signup_path
+    fill_in('player_firstname', with: "Matti")
+    fill_in('player_lastname', with: "Luukkainen")
+    fill_in('player_password', with: "Fullstack")
+    fill_in('player_password_confirmation', with: "Fullstack")
+    click_button('Create Player')
+    expect(Player.last.username).to eq "MattiLuukkainen2"
+  end
+
 
   describe "is redirected to signup page" do
 
