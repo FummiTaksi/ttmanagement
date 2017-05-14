@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_access, only: [:edit, :update, :create, :destroy]
 
 
   # GET /players
@@ -16,15 +17,19 @@ class PlayersController < ApplicationController
 
 
   def toggle_admin
-    player = Player.find(params[:id])
-    if player.admin
-      player.admin = false
-    else
-      player.admin = true
+    
+    if current_player and current_player.admin
+      player = Player.find(params[:id])
+      if player.admin
+        player.admin = false
+      else
+        player.admin = true
+      end
+      player.save
+      new_status = player.clubowner ? "Admin" : "Not Admin"
+      redirect_to :back, notice: "This users status changed to #{new_status}"
     end
-    player.save
-    new_status = player.clubowner ? "Admin" : "Not Admin"
-    redirect_to :back, notice: "This users status changed to #{new_status}"
+
   end
 
 
@@ -112,6 +117,10 @@ class PlayersController < ApplicationController
     def set_player
       @player = Player.find(params[:id])
     end
+
+  def ensure_access
+
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params

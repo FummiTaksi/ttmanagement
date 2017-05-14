@@ -400,8 +400,8 @@
         null,
         1,
         null,
-        1217,
-        1001,
+        1221,
+        1005,
         null,
         null,
         null
@@ -645,6 +645,7 @@
       "/Users/omistaja/ttmanagement/app/controllers/players_controller.rb": [
         1,
         1,
+        1,
         null,
         null,
         null,
@@ -661,6 +662,8 @@
         null,
         null,
         1,
+        null,
+        2,
         2,
         2,
         1,
@@ -670,6 +673,8 @@
         2,
         2,
         2,
+        null,
+        null,
         null,
         null,
         null,
@@ -758,6 +763,10 @@
         48,
         null,
         null,
+        1,
+        null,
+        null,
+        null,
         null,
         1,
         8,
@@ -765,6 +774,6 @@
         null
       ]
     },
-    "timestamp": 1494614868
+    "timestamp": 1494751660
   }
 }
