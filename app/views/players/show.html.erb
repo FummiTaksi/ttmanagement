@@ -21,18 +21,25 @@
   <%= @player.count_age %>
 </p>
 
+<p></p>
+<% if @player.club %>
+<%= @player %> is member of <%= @player.club%>
+    <% else %>
+    <%=@player%> doesn't have a club.
+<% end %>
+<br>
 <b> This player has played <%= @player.matches.size%> matches, won <%=@player.won_matches.size %> matches.
      win precentange <%= @player.win_precentage %> % </b>
 
 <br></br>
-<% if @player.clubowner and !@player.club.nil? %>
+<% if @player.clubowner %>
 
 <p>
-  <%=@player%> is owner of <%=@player.club %>
+  <%=@player%> is clubowner
 </p>
     <br></br>
-    <% elsif @player.club %>
-        <%=@player%> is member of <%= @player.club %>
+    <% else %>
+        <%=@player%> is not a clubowner
 
  <% end %>
 <% if @player.admin %>
@@ -40,19 +47,20 @@
 <p>
   <%=@player%> is admin!
 </p>
+    <% else %>
+   <p><%=@player%> is not admin.</p>
 
     <% end %>
 
 
-<% if current_player and current_player.admin %>
-    <% if @player.club.nil? %>
-        <%=  link_to 'make this player a clubowner', toggle_clubowner_player_path(@player.id), method: :post if !@player.clubowner %>
-    <% end %>
+
+        <%=  link_to 'Toggle clubowner', toggle_clubowner_player_path(@player.id), class:"btn btn-success" , method: :post if current_player and current_player.admin %>
+
     <br></br>
 
-        <%= link_to 'Toggle admin', toggle_admin_player_path(@player.id), class:'btn btn-primary' , method: :post %>
+        <%= link_to 'Toggle admin', toggle_admin_player_path(@player.id), class:'btn btn-primary' , method: :post if current_player and current_player.admin %>
 
-<% end %>
+
 
 <br><%=link_to 'Edit', edit_player_path(@player), class:'btn btn-primary' if current_player and current_player.username == @player.username %> </br>
 <br><%= link_to 'Destroy', @player, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' if current_player and current_player.username == @player.username%> </br>

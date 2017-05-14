@@ -1,4 +1,4 @@
-### Tuntipäiväkirja
+### Tuntipäiväkirja, yhteensä 60,5h
 Päivä | Tunnit | Mitä tein
 --- | -------- | -----
 16.3 | 2,5h | Aiheen suunittelua, koodauksen aloittamista
@@ -26,3 +26,4 @@ Päivä | Tunnit | Mitä tein
 10.5 | 1,5h | Validoitu club viewit 
 11.5 | 2,5h | kaikki viewit validoitu ja testattu
 12.5 | 3h   | poistettu bugi matcheihin ja clubeihin liittyen.
+14.5 | 4h   | Paranneltu validointeja.

@@ -100,10 +100,17 @@ describe "Club" do
 
 
 
-    it "can be destroyed" do
+    it "can be destroyed by clubowner" do
       sign_in("JaakkoJaakkonen", "Salasana1")
       visit club_path(Club.first)
       click_link "Destroy"
+      expect(Club.count).to eq 0
+      expect(Player.third.club_id).to eq nil
+    end
+
+    it "is destroyed if clubowner deletes account" do
+      sign_in("JaakkoJaakkonen", "Salasana1")
+      click_link("Destroy")
       expect(Club.count).to eq 0
       expect(Player.third.club_id).to eq nil
     end

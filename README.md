@@ -18,7 +18,9 @@ Features:
   -Password Cant be blank
   
   
-2) Username is generated from user's firstname and lastname
+2) Unique username is generated from user's firstname and lastname
+  
+  -If someone has same name, numbers added to end of username
   
 3) User can sign in  to system with own account
   
@@ -52,11 +54,13 @@ Features:
  
    Validations:
    
-   -Match has to be between different players
+   -Match has to be between different players who belong in a club
    
    -Match's score has to be valid
  
  10) Admin can toggle another player's admin status
+ 
+ 11) Admin can toggle another player's clubowner status
  
  
   
