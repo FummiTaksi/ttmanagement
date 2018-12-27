@@ -1,5 +1,13 @@
 https://afternoon-badlands-18041.herokuapp.com/
 
+
+Running with Docker:
+
+```
+docker pull fummitaksi/ttmanagement
+docker run -p 3000:3000 fummitaksi/ttmanagement
+```
+
 [![Build Status](https://travis-ci.org/FummiTaksi/ttmanagement.png)](https://travis-ci.org/FummiTaksi/ttmanagement)
 
 
